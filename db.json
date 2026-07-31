@@ -1,0 +1,62 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Mohamed Omar",
+      "email": "mohamed@example.com",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "name": "Amina Hassan",
+      "email": "amina@example.com",
+      "password": "123456"
+    }
+  ],
+
+  "counsellors": [
+    {
+      "id": 1,
+      "name": "Dr. Ahmed Hassan",
+      "specialization": "Academic Counselling",
+      "email": "ahmed@counselling.com",
+      "phone": "0712345678"
+    },
+    {
+      "id": 2,
+      "name": "Ms. Fatuma Ali",
+      "specialization": "Mental Health",
+      "email": "fatuma@counselling.com",
+      "phone": "0723456789"
+    },
+    {
+      "id": 3,
+      "name": "Mr. Abdi Noor",
+      "specialization": "Career Guidance",
+      "email": "abdi@counselling.com",
+      "phone": "0734567890"
+    }
+  ],
+
+  "appointments": [
+    {
+      "id": 1,
+      "studentId": 1,
+      "counsellorId": 2,
+      "seenBefore": "No",
+      "preferredDate": "2026-06-10",
+      "preferredTime": "10:00 AM",
+      "description": "Academic stress and exam preparation",
+      "status": "Pending"
+    }
+  ],
+
+  "admins": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin123"
+    }
+  ]
+}
+
