@@ -1,23 +1,23 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { 
-  Heart, 
-  Home, 
-  LogIn, 
-  UserPlus, 
-  LayoutDashboard,
-  LogOut,
-  Menu,
-  X,
-  User,
-  Shield,
-  GraduationCap,
-  Stethoscope,
-  Bell,
-  Settings,
-  ChevronDown
-} from "lucide-react";
 import { useState, useEffect } from "react";
+import { 
+  FaHeart, 
+  FaHome, 
+  FaSignInAlt, 
+  FaUserPlus, 
+  FaTachometerAlt,
+  FaSignOutAlt,
+  FaUser,
+  FaShieldAlt,
+  FaGraduationCap,
+  FaUserMd,
+  FaBell,
+  FaCog,
+  FaChevronDown,
+  FaBars,
+  FaTimes
+} from 'react-icons/fa';
 
 export default function Navbar() {
   const location = useLocation();
@@ -45,7 +45,7 @@ export default function Navbar() {
   const isActive = (path) => location.pathname === path;
 
   const navLinks = [
-    { to: "/", label: "Home", icon: <Home className="size-4" /> },
+    { to: "/", label: "Home", icon: <FaHome className="text-sm" /> },
   ];
 
   const getDashboardLink = () => {
@@ -57,11 +57,11 @@ export default function Navbar() {
   };
 
   const getRoleIcon = () => {
-    if (!user) return <User className="size-4" />;
-    if (user.role === "student") return <GraduationCap className="size-4" />;
-    if (user.role === "counsellor") return <Stethoscope className="size-4" />;
-    if (user.role === "admin") return <Shield className="size-4" />;
-    return <User className="size-4" />;
+    if (!user) return <FaUser className="text-sm" />;
+    if (user.role === "student") return <FaGraduationCap className="text-sm" />;
+    if (user.role === "counsellor") return <FaUserMd className="text-sm" />;
+    if (user.role === "admin") return <FaShieldAlt className="text-sm" />;
+    return <FaUser className="text-sm" />;
   };
 
   const getRoleLabel = () => {
@@ -87,7 +87,7 @@ export default function Navbar() {
             <div className="relative">
               <div className="absolute inset-0 bg-red-600/20 rounded-xl blur-md group-hover:blur-xl transition" />
               <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-700 text-white shadow-lg shadow-red-600/25 group-hover:scale-105 transition">
-                <Heart className="size-5 fill-white/20" />
+                <FaHeart className="text-lg fill-white/20" />
               </div>
             </div>
             <div className="hidden sm:block">
@@ -139,7 +139,7 @@ export default function Navbar() {
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
-                  <LogIn className="size-4" />
+                  <FaSignInAlt className="text-sm" />
                   Login
                   {isActive("/login") && (
                     <motion.div
@@ -153,7 +153,7 @@ export default function Navbar() {
                   to="/signup"
                   className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 transition shadow-lg shadow-red-600/25 hover:shadow-red-600/40"
                 >
-                  <UserPlus className="size-4" />
+                  <FaUserPlus className="text-sm" />
                   Signup
                 </Link>
               </>
@@ -169,7 +169,7 @@ export default function Navbar() {
                     {getRoleIcon()}
                     <span className="hidden md:inline">{getRoleLabel()}</span>
                   </span>
-                  <ChevronDown className={`size-4 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
+                  <FaChevronDown className={`text-xs transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
                 </button>
 
                 {showDropdown && (
@@ -192,7 +192,7 @@ export default function Navbar() {
                         onClick={() => setShowDropdown(false)}
                         className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
                       >
-                        <LayoutDashboard className="size-4" />
+                        <FaTachometerAlt className="text-sm" />
                         Dashboard
                       </Link>
                     )}
@@ -202,7 +202,7 @@ export default function Navbar() {
                       onClick={() => setShowDropdown(false)}
                       className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
                     >
-                      <User className="size-4" />
+                      <FaUser className="text-sm" />
                       Profile
                     </Link>
                     
@@ -211,7 +211,7 @@ export default function Navbar() {
                       onClick={() => setShowDropdown(false)}
                       className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
                     >
-                      <Settings className="size-4" />
+                      <FaCog className="text-sm" />
                       Settings
                     </Link>
                     
@@ -220,7 +220,7 @@ export default function Navbar() {
                         onClick={logout}
                         className="flex items-center gap-3 px-4 py-2.5 w-full text-sm text-red-600 hover:text-red-700 hover:bg-red-50 transition"
                       >
-                        <LogOut className="size-4" />
+                        <FaSignOutAlt className="text-sm" />
                         Logout
                       </button>
                     </div>
@@ -236,7 +236,7 @@ export default function Navbar() {
             className="lg:hidden inline-flex items-center justify-center p-2.5 rounded-lg hover:bg-gray-50 transition"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            {isOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
           </button>
         </div>
 
@@ -281,7 +281,7 @@ export default function Navbar() {
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
-                  <LogIn className="size-4" />
+                  <FaSignInAlt className="text-sm" />
                   Login
                   {isActive("/login") && (
                     <span className="ml-auto text-red-600">●</span>
@@ -292,7 +292,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center gap-3 mx-4 px-4 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 transition"
                 >
-                  <UserPlus className="size-4" />
+                  <FaUserPlus className="text-sm" />
                   Signup
                 </Link>
               </>
@@ -313,7 +313,7 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className="flex items-center gap-3 px-4 py-3 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
                   >
-                    <LayoutDashboard className="size-4" />
+                    <FaTachometerAlt className="text-sm" />
                     Dashboard
                   </Link>
                 )}
@@ -323,7 +323,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-3 px-4 py-3 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
                 >
-                  <User className="size-4" />
+                  <FaUser className="text-sm" />
                   Profile
                 </Link>
                 
@@ -334,7 +334,7 @@ export default function Navbar() {
                   }}
                   className="flex items-center gap-3 px-4 py-3 w-full text-sm text-red-600 hover:text-red-700 hover:bg-red-50 transition"
                 >
-                  <LogOut className="size-4" />
+                  <FaSignOutAlt className="text-sm" />
                   Logout
                 </button>
               </>
