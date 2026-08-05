@@ -17,13 +17,8 @@ import {
   Sparkles,
   Star,
   Quote,
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Twitter,
-  Instagram,
-  Linkedin
+  TrendingUp,
+  UserPlus
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -402,6 +397,3 @@ export default function Home() {
     </div>
   );
 }
-
-// Add this import for TrendingUp if not already imported
-import { TrendingUp } from 'lucide-react';
