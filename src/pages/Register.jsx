@@ -86,7 +86,7 @@ function Register() {
                   boxShadow: "0 8px 24px rgba(34,197,94,0.25)"
                 }}
               >
-                <CheckCircle style={{ color: "white", fontSize: "32px" }} />
+                <CheckCircle size={40} style={{ color: "white" }} />
               </motion.div>
               <h2 style={{
                 fontSize: "28px",
@@ -291,7 +291,8 @@ function Register() {
                       color: "#111827",
                       outline: "none",
                       transition: "all 0.2s",
-                      boxSizing: "border-box"
+                      boxSizing: "border-box",
+                      background: "white"
                     }}
                     onFocus={(e) => {
                       e.target.style.borderColor = "#2563eb";
@@ -341,7 +342,8 @@ function Register() {
                       color: "#111827",
                       outline: "none",
                       transition: "all 0.2s",
-                      boxSizing: "border-box"
+                      boxSizing: "border-box",
+                      background: "white"
                     }}
                     onFocus={(e) => {
                       e.target.style.borderColor = "#2563eb";
@@ -391,7 +393,8 @@ function Register() {
                       color: "#111827",
                       outline: "none",
                       transition: "all 0.2s",
-                      boxSizing: "border-box"
+                      boxSizing: "border-box",
+                      background: "white"
                     }}
                     onFocus={(e) => {
                       e.target.style.borderColor = "#2563eb";
@@ -441,7 +444,8 @@ function Register() {
                       color: "#111827",
                       outline: "none",
                       transition: "all 0.2s",
-                      boxSizing: "border-box"
+                      boxSizing: "border-box",
+                      background: "white"
                     }}
                     onFocus={(e) => {
                       e.target.style.borderColor = "#2563eb";
@@ -491,7 +495,8 @@ function Register() {
                       color: "#111827",
                       outline: "none",
                       transition: "all 0.2s",
-                      boxSizing: "border-box"
+                      boxSizing: "border-box",
+                      background: "white"
                     }}
                     onFocus={(e) => {
                       e.target.style.borderColor = "#2563eb";
