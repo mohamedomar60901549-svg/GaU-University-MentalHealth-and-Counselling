@@ -1,13 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  Heart, 
-  Home as HomeIcon, 
-  Info, 
-  Phone, 
-  HelpCircle, 
-  Shield, 
-  FileText,
+  Brain, 
   MessageCircle,
   TrendingUp,
   Clock,
@@ -15,21 +9,24 @@ import {
   Calendar,
   MapPin,
   Mail,
-  Globe,
+  Phone,
   ArrowRight,
   Sparkles,
-  Star,
   Quote,
-  User,
   CheckCircle,
+  Shield,
+  Smile,
+  BookOpen,
+  Home,
+  Info,
+  HelpCircle,
+  FileText,
   Award,
   Target,
-  Brain,
-  Smile,
-  BookOpen
+  Star,
+  Globe
 } from 'lucide-react';
 
-// Renamed the main component to avoid conflict with HomeIcon
 export default function HomePage() {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -68,7 +65,7 @@ export default function HomePage() {
   ];
 
   const quickLinks = [
-    { to: "/", label: "Home", icon: <HomeIcon className="w-4 h-4" /> },
+    { to: "/", label: "Home", icon: <Home className="w-4 h-4" /> },
     { to: "/about", label: "About Us", icon: <Info className="w-4 h-4" /> },
     { to: "/contact", label: "Contact", icon: <Phone className="w-4 h-4" /> },
     { to: "/faq", label: "FAQs", icon: <HelpCircle className="w-4 h-4" /> },
@@ -80,7 +77,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* ================= NAVBAR ================= */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
             <Link to="/" className="flex items-center gap-2.5">
               <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-600/25">
@@ -141,7 +138,7 @@ export default function HomePage() {
           <div className="absolute bottom-10 right-5 w-80 h-80 bg-purple-200/20 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -259,7 +256,7 @@ export default function HomePage() {
 
       {/* ================= SERVICES SECTION ================= */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -303,7 +300,7 @@ export default function HomePage() {
 
       {/* ================= TESTIMONIALS SECTION ================= */}
       <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -355,7 +352,7 @@ export default function HomePage() {
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }} />
 
-        <div className="max-w-4xl mx-auto px-6 text-center relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -402,7 +399,7 @@ export default function HomePage() {
 
       {/* ================= FOOTER ================= */}
       <footer className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
           <div className="grid md:grid-cols-4 gap-12">
             {/* Brand Column */}
             <div>
