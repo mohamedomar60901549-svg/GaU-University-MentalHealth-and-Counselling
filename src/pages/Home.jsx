@@ -25,13 +25,33 @@ import {
   Target,
   Star,
   Globe,
-  UserPlus
+  UserPlus,
+  Heart,
+  Headphones,
+  Video,
+  Coffee,
+  Moon,
+  Sun,
+  Flower,
+  Compass
 } from 'lucide-react';
 
 export default function HomePage() {
   const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
+  const fadeInLeft = {
+    initial: { opacity: 0, x: -30 },
+    animate: { opacity: 1, x: 0 },
+    transition: { duration: 0.6 }
+  };
+
+  const fadeInRight = {
+    initial: { opacity: 0, x: 30 },
+    animate: { opacity: 1, x: 0 },
     transition: { duration: 0.6 }
   };
 
@@ -44,25 +64,43 @@ export default function HomePage() {
   };
 
   const services = [
-    { icon: <Brain className="w-8 h-8" />, title: "Personalized Counselling", desc: "One-on-one sessions with experienced mental health professionals" },
-    { icon: <MessageCircle className="w-8 h-8" />, title: "Real-time Chat Support", desc: "Instant messaging for immediate emotional support" },
-    { icon: <TrendingUp className="w-8 h-8" />, title: "Progress Tracking", desc: "Monitor your emotional wellbeing and growth" },
-    { icon: <Clock className="w-8 h-8" />, title: "24/7 Crisis Support", desc: "Emergency help available anytime, anywhere" },
-    { icon: <Users className="w-8 h-8" />, title: "Group Therapy Sessions", desc: "Connect with peers in a supportive environment" },
-    { icon: <BookOpen className="w-8 h-8" />, title: "Wellness Workshops", desc: "Learn coping strategies and life skills" }
+    { icon: <Brain className="w-8 h-8" />, title: "Personalized Counselling", desc: "One-on-one sessions with experienced mental health professionals", color: "from-blue-500 to-blue-600" },
+    { icon: <MessageCircle className="w-8 h-8" />, title: "Real-time Chat Support", desc: "Instant messaging for immediate emotional support", color: "from-purple-500 to-purple-600" },
+    { icon: <TrendingUp className="w-8 h-8" />, title: "Progress Tracking", desc: "Monitor your emotional wellbeing and growth", color: "from-green-500 to-green-600" },
+    { icon: <Clock className="w-8 h-8" />, title: "24/7 Crisis Support", desc: "Emergency help available anytime, anywhere", color: "from-red-500 to-red-600" },
+    { icon: <Users className="w-8 h-8" />, title: "Group Therapy Sessions", desc: "Connect with peers in a supportive environment", color: "from-orange-500 to-orange-600" },
+    { icon: <BookOpen className="w-8 h-8" />, title: "Wellness Workshops", desc: "Learn coping strategies and life skills", color: "from-teal-500 to-teal-600" }
   ];
 
   const stats = [
-    { value: "500+", label: "Students Helped" },
-    { value: "50+", label: "Counsellors" },
-    { value: "98%", label: "Satisfaction Rate" },
-    { value: "24/7", label: "Support Available" }
+    { value: "500+", label: "Students Helped", icon: <Users className="w-6 h-6" /> },
+    { value: "50+", label: "Counsellors", icon: <UserPlus className="w-6 h-6" /> },
+    { value: "98%", label: "Satisfaction Rate", icon: <Star className="w-6 h-6" /> },
+    { value: "24/7", label: "Support Available", icon: <Clock className="w-6 h-6" /> }
   ];
 
   const testimonials = [
-    { name: "Mohamed Omar", role: "Computer Science Student", text: "The counselling services helped me overcome anxiety and perform better in my studies.", icon: "👨‍🎓" },
-    { name: "Fatuma Hassan", role: "Education Student", text: "I found a safe space to share my feelings. The counsellors are truly understanding.", icon: "👩‍🎓" },
-    { name: "Dr. Ahmed Noor", role: "Senior Counsellor", text: "Seeing students transform and grow is the most rewarding part of my work.", icon: "👨‍⚕️" }
+    { 
+      name: "Mohamed Omar", 
+      role: "Computer Science Student", 
+      text: "The counselling services helped me overcome anxiety and perform better in my studies. I'm now more confident and focused.", 
+      icon: "👨‍🎓",
+      rating: 5
+    },
+    { 
+      name: "Fatuma Hassan", 
+      role: "Education Student", 
+      text: "I found a safe space to share my feelings. The counsellors are truly understanding and helped me navigate through difficult times.", 
+      icon: "👩‍🎓",
+      rating: 5
+    },
+    { 
+      name: "Dr. Ahmed Noor", 
+      role: "Senior Counsellor", 
+      text: "Seeing students transform and grow is the most rewarding part of my work. Every session brings new hope and healing.", 
+      icon: "👨‍⚕️",
+      rating: 5
+    }
   ];
 
   const quickLinks = [
@@ -75,28 +113,31 @@ export default function HomePage() {
   ];
 
   const whyChooseUs = [
-    { icon: <Shield className="w-7 h-7" />, title: "Confidential", text: "Your privacy is our priority. All sessions are 100% confidential." },
+    { icon: <Shield className="w-7 h-7" />, title: "100% Confidential", text: "Your privacy is our priority. All sessions are completely confidential." },
     { icon: <Users className="w-7 h-7" />, title: "Expert Counsellors", text: "Connect with licensed and experienced mental health professionals." },
     { icon: <Clock className="w-7 h-7" />, title: "24/7 Availability", text: "Get support whenever you need it, day or night." },
     { icon: <Award className="w-7 h-7" />, title: "Quality Care", text: "We maintain the highest standards of mental health care." }
   ];
 
   const howItWorks = [
-    { icon: <UserPlus className="w-8 h-8" />, step: "01", title: "Create Account", desc: "Sign up in 2 minutes" },
-    { icon: <Users className="w-8 h-8" />, step: "02", title: "Choose Counselor", desc: "Browse expert profiles" },
-    { icon: <Calendar className="w-8 h-8" />, step: "03", title: "Book Session", desc: "Schedule at your time" },
-    { icon: <Smile className="w-8 h-8" />, step: "04", title: "Start Healing", desc: "Begin your journey" }
+    { icon: <UserPlus className="w-8 h-8" />, step: "01", title: "Create Account", desc: "Sign up in 2 minutes with your student email" },
+    { icon: <Users className="w-8 h-8" />, step: "02", title: "Choose Counselor", desc: "Browse profiles and find your perfect match" },
+    { icon: <Calendar className="w-8 h-8" />, step: "03", title: "Book Session", desc: "Schedule at a time that works for you" },
+    { icon: <Smile className="w-8 h-8" />, step: "04", title: "Start Healing", desc: "Begin your journey to mental wellness" }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* ================= NAVBAR ================= */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-600/25">
-                <Brain className="w-5 h-5" />
+            <Link to="/" className="flex items-center gap-2.5 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-blue-600/20 rounded-xl blur-md group-hover:blur-xl transition" />
+                <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-600/25 group-hover:scale-105 transition">
+                  <Brain className="w-5 h-5" />
+                </div>
               </div>
               <div>
                 <span className="text-xl font-bold text-gray-900">
@@ -146,25 +187,26 @@ export default function HomePage() {
       </nav>
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative overflow-hidden pt-16 md:pt-24">
+      <section className="relative overflow-hidden pt-12 md:pt-20">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-10 left-5 w-64 h-64 bg-blue-200/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-5 w-80 h-80 bg-purple-200/20 rounded-full blur-3xl" />
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-100/10 to-purple-100/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
                 <Sparkles className="w-4 h-4" />
                 Welcome to Student Mental Health
-              </span>
+              </div>
               
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mt-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Empowering Students
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -180,14 +222,14 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-4 mt-8">
                 <Link
                   to="/signup"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3.5 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3.5 rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 hover:scale-105 transform"
                 >
                   Get Started
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 border-2 border-blue-600 text-blue-600 px-8 py-3.5 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all"
+                  className="inline-flex items-center gap-2 border-2 border-blue-600 text-blue-600 px-8 py-3.5 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all hover:scale-105 transform"
                 >
                   Learn More
                 </Link>
@@ -200,7 +242,7 @@ export default function HomePage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="text-center"
+                    className="text-center bg-white/50 backdrop-blur-sm rounded-2xl p-4 shadow-sm"
                   >
                     <div className="text-3xl font-bold text-blue-600">{stat.value}</div>
                     <div className="text-sm text-gray-500">{stat.label}</div>
@@ -212,17 +254,17 @@ export default function HomePage() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-8 border border-gray-100">
+              <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-6 md:p-8 border border-gray-100">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="rounded-xl bg-blue-100 p-2.5 text-blue-600">
+                  <div className="rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 p-2.5 text-blue-600">
                     <Smile className="w-6 h-6" />
                   </div>
                   <h2 className="text-xl font-bold text-gray-900">Quick Support</h2>
                   <span className="ml-auto px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold animate-pulse">
-                    Online
+                    ● Online
                   </span>
                 </div>
                 <div className="space-y-4">
@@ -269,19 +311,19 @@ export default function HomePage() {
       </section>
 
       {/* ================= STATISTICS ================= */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold">
-              STATISTICS
+              OUR IMPACT
             </span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-4">
-              Making a <span className="text-blue-600">Difference</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
+              Making a <span className="text-blue-600">Difference</span> Every Day
             </h2>
           </motion.div>
 
@@ -290,22 +332,19 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
           >
             {stats.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
+                className="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 text-center shadow-md hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center text-blue-600 mb-5 mx-auto group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition">
-                  {i === 0 && <Users className="w-8 h-8" />}
-                  {i === 1 && <UserPlus className="w-8 h-8" />}
-                  {i === 2 && <TrendingUp className="w-8 h-8" />}
-                  {i === 3 && <Clock className="w-8 h-8" />}
+                <div className="w-14 h-14 mx-auto bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl flex items-center justify-center text-blue-600 mb-4 group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition">
+                  {item.icon}
                 </div>
-                <div className="text-4xl font-extrabold text-blue-600">{item.value}</div>
-                <p className="mt-2 text-gray-600 font-medium">{item.label}</p>
+                <div className="text-3xl font-extrabold text-blue-600">{item.value}</div>
+                <p className="mt-1 text-sm text-gray-600 font-medium">{item.label}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -313,18 +352,18 @@ export default function HomePage() {
       </section>
 
       {/* ================= SERVICES SECTION ================= */}
-      <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <span className="inline-block bg-white text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">
               OUR SERVICES
             </span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
               Comprehensive <span className="text-blue-600">Mental Health</span> Support
             </h2>
             <p className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">
@@ -337,18 +376,18 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {services.map((service, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
+                className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center text-blue-600 mb-5 group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition">
+                <div className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center text-white mb-4 group-hover:scale-110 transition`}>
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
+                <h3 className="text-lg font-bold text-gray-900">{service.title}</h3>
                 <p className="mt-2 text-gray-600 leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
@@ -357,19 +396,19 @@ export default function HomePage() {
       </section>
 
       {/* ================= HOW IT WORKS ================= */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold">
               HOW IT WORKS
             </span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-4">
-              Start Your <span className="text-blue-600">Journey</span> in 4 Steps
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
+              Start Your <span className="text-blue-600">Journey</span> in 4 Simple Steps
             </h2>
           </motion.div>
 
@@ -378,24 +417,29 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-4 gap-8"
+            className="grid md:grid-cols-4 gap-6"
           >
             {howItWorks.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="text-center group"
+                className="text-center group relative"
               >
                 <div className="relative">
                   <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-600/25 group-hover:scale-110 transition-transform mb-4">
                     {item.icon}
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center text-blue-600 font-bold text-sm shadow-md">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center text-blue-600 font-bold text-sm shadow-md border-2 border-blue-100">
                     {item.step}
                   </div>
+                  {i < 3 && (
+                    <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-300 to-purple-300">
+                      <div className="absolute -right-1 -top-1 w-2 h-2 bg-blue-400 rounded-full" />
+                    </div>
+                  )}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                <p className="mt-1 text-gray-600">{item.desc}</p>
+                <h3 className="text-lg font-bold text-gray-900">{item.title}</h3>
+                <p className="mt-1 text-sm text-gray-600">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -403,18 +447,18 @@ export default function HomePage() {
       </section>
 
       {/* ================= WHY CHOOSE US ================= */}
-      <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <span className="inline-block bg-white text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">
               WHY CHOOSE US
             </span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
               Your Mental Health <span className="text-blue-600">Matters to Us</span>
             </h2>
           </motion.div>
@@ -424,19 +468,19 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {whyChooseUs.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="group bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
+                className="group bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
               >
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-600/25 group-hover:scale-110 transition mb-4">
+                <div className="w-14 h-14 mx-auto bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-600/25 group-hover:scale-110 transition mb-4">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                <p className="mt-3 text-gray-600 leading-relaxed">{item.text}</p>
+                <h3 className="text-lg font-bold text-gray-900">{item.title}</h3>
+                <p className="mt-2 text-sm text-gray-600 leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -444,18 +488,18 @@ export default function HomePage() {
       </section>
 
       {/* ================= TESTIMONIALS SECTION ================= */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold">
               TESTIMONIALS
             </span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-4">
               What Our <span className="text-blue-600">Community Says</span>
             </h2>
           </motion.div>
@@ -465,24 +509,28 @@ export default function HomePage() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-3 gap-6"
           >
             {testimonials.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100"
+                className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all border border-gray-100"
               >
-                <Quote className="w-8 h-8 text-blue-400 mb-4" />
+                <div className="flex items-center gap-1 text-yellow-400 mb-3">
+                  {[...Array(item.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+                <Quote className="w-6 h-6 text-blue-400 mb-3" />
                 <p className="text-gray-600 leading-relaxed italic">"{item.text}"</p>
-                <hr className="my-6 border-gray-200" />
-                <div className="flex items-center gap-4">
-                  <div className="text-4xl">{item.icon}</div>
+                <hr className="my-4 border-gray-200" />
+                <div className="flex items-center gap-3">
+                  <div className="text-3xl">{item.icon}</div>
                   <div>
                     <h4 className="font-bold text-gray-900">{item.name}</h4>
                     <p className="text-sm text-blue-600 font-medium">{item.role}</p>
                   </div>
-                  <div className="ml-auto text-yellow-400">★★★★★</div>
                 </div>
               </motion.div>
             ))}
@@ -491,38 +539,38 @@ export default function HomePage() {
       </section>
 
       {/* ================= CTA SECTION ================= */}
-      <section className="relative overflow-hidden py-24">
+      <section className="relative overflow-hidden py-16">
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-700 via-purple-700 to-blue-800" />
         <div className="absolute inset-0 -z-10 opacity-10" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }} />
 
-        <div className="max-w-4xl mx-auto px-6 text-center relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <div className="mx-auto mb-6 inline-flex w-16 h-16 items-center justify-center rounded-2xl bg-white/10 backdrop-blur text-white">
-              <Brain className="w-8 h-8" />
+              <Heart className="w-8 h-8" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
               Your Mental Health Matters
             </h2>
-            <p className="text-xl text-blue-100 mt-4 max-w-2xl mx-auto">
+            <p className="text-lg text-blue-100 mt-4 max-w-2xl mx-auto">
               Join thousands of students finding hope, healing, and happiness through our support
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Link
                 to="/signup"
-                className="inline-flex items-center gap-2 bg-white text-blue-700 px-10 py-4 rounded-full font-bold hover:bg-gray-100 transition-all hover:scale-105 shadow-2xl"
+                className="inline-flex items-center gap-2 bg-white text-blue-700 px-8 py-3.5 rounded-full font-bold hover:bg-gray-100 transition-all hover:scale-105 shadow-2xl"
               >
                 Start Your Journey
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 border-2 border-white/50 text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-blue-700 transition-all"
+                className="inline-flex items-center gap-2 border-2 border-white/50 text-white px-8 py-3.5 rounded-full font-bold hover:bg-white hover:text-blue-700 transition-all"
               >
                 Contact Us
               </Link>
@@ -547,8 +595,8 @@ export default function HomePage() {
 
       {/* ================= FOOTER ================= */}
       <footer className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid md:grid-cols-4 gap-8">
             <div>
               <Link to="/" className="flex items-center gap-2.5 mb-4">
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white">
@@ -582,7 +630,7 @@ export default function HomePage() {
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
                 Quick Links
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {quickLinks.map((link) => (
                   <li key={link.to}>
                     <Link 
@@ -601,7 +649,7 @@ export default function HomePage() {
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
                 Our Services
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {services.map((service, i) => (
                   <li key={i}>
                     <Link to="/services" className="text-gray-400 hover:text-white transition text-sm">
@@ -616,7 +664,7 @@ export default function HomePage() {
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
                 Get In Touch
               </h3>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 <li className="flex items-start gap-3 text-gray-400 text-sm">
                   <MapPin className="w-4 h-4 mt-0.5 text-blue-400 flex-shrink-0" />
                   <span>Garissa University, Garissa, Kenya</span>
@@ -641,7 +689,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="border-t border-gray-800 mt-8 pt-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-sm text-gray-400">
                 © 2026 Student Mental Health & Counselling | All Rights Reserved
