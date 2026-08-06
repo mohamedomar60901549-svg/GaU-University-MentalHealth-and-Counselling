@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { 
   FaBrain,
@@ -12,7 +11,6 @@ import {
   FaShieldAlt,
   FaGraduationCap,
   FaUserMd,
-  FaBell,
   FaCog,
   FaChevronDown,
   FaBars,
@@ -45,10 +43,10 @@ export default function Navbar() {
   const isActive = (path) => location.pathname === path;
 
   const navLinks = [
-    { to: "/", label: "Home", icon: <FaHome className="text-sm" /> },
-    { to: "/about", label: "About Us", icon: <FaUser className="text-sm" /> },
-    { to: "/contact", label: "Contact", icon: <FaUser className="text-sm" /> },
-    { to: "/faq", label: "FAQs", icon: <FaUser className="text-sm" /> },
+    { to: "/", label: "Home" },
+    { to: "/about", label: "About Us" },
+    { to: "/contact", label: "Contact" },
+    { to: "/faq", label: "FAQs" },
   ];
 
   const getDashboardLink = () => {
@@ -74,117 +72,224 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm"
-          : "bg-white border-b border-gray-100"
-      }`}
+      style={{
+        position: "sticky",
+        top: 0,
+        zIndex: 50,
+        background: scrolled ? "rgba(255,255,255,0.95)" : "white",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        borderBottom: scrolled ? "1px solid #e5e7eb" : "1px solid #f3f4f6",
+        boxShadow: scrolled ? "0 1px 3px rgba(0,0,0,0.05)" : "none",
+        transition: "all 0.3s"
+      }}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div style={{
+        maxWidth: "1200px",
+        margin: "0 auto",
+        padding: "0 24px"
+      }}>
+        <div style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: "64px"
+        }}>
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2.5 group"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              textDecoration: "none"
+            }}
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-blue-600/20 rounded-xl blur-md group-hover:blur-xl transition" />
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-600/25 group-hover:scale-105 transition">
-                <FaBrain className="text-lg" />
-              </div>
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "36px",
+              height: "36px",
+              borderRadius: "8px",
+              background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+              color: "white",
+              fontSize: "18px"
+            }}>
+              <FaBrain />
             </div>
-            <div className="hidden sm:block">
-              <span className="text-xl font-bold text-gray-900">
-                Student<span className="text-blue-600">Mental</span>
+            <div>
+              <span style={{
+                fontSize: "20px",
+                fontWeight: "700",
+                color: "#111827"
+              }}>
+                Student<span style={{ color: "#2563eb" }}>Mental</span>
               </span>
-              <span className="ml-2 text-xs font-medium text-gray-400 border-l border-gray-200 pl-2">
+              <span style={{
+                marginLeft: "8px",
+                fontSize: "12px",
+                fontWeight: "500",
+                color: "#9ca3af",
+                borderLeft: "1px solid #e5e7eb",
+                paddingLeft: "8px",
+                display: "none"
+              }}>
                 Health
-              </span>
-            </div>
-            <div className="sm:hidden">
-              <span className="text-lg font-bold text-gray-900">
-                Student<span className="text-blue-600">Mental</span>
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div style={{
+            display: "none",
+            alignItems: "center",
+            gap: "4px",
+            "@media (min-width: 1024px)": {
+              display: "flex"
+            }
+          }}>
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                  isActive(link.to)
-                    ? "text-blue-600 bg-blue-50"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                }`}
+                style={{
+                  padding: "8px 16px",
+                  borderRadius: "8px",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  color: isActive(link.to) ? "#2563eb" : "#6b7280",
+                  background: isActive(link.to) ? "#eff6ff" : "transparent",
+                  textDecoration: "none",
+                  transition: "all 0.2s"
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive(link.to)) {
+                    e.target.style.color = "#111827";
+                    e.target.style.background = "#f3f4f6";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive(link.to)) {
+                    e.target.style.color = "#6b7280";
+                    e.target.style.background = "transparent";
+                  }
+                }}
               >
-                {link.icon}
                 {link.label}
-                {isActive(link.to) && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-blue-600 rounded-full"
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                  />
-                )}
               </Link>
             ))}
 
             {!user && (
-              <>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginLeft: "8px" }}>
                 <Link
                   to="/login"
-                  className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                    isActive("/login")
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
+                  style={{
+                    padding: "8px 16px",
+                    borderRadius: "8px",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    color: isActive("/login") ? "#2563eb" : "#6b7280",
+                    background: isActive("/login") ? "#eff6ff" : "transparent",
+                    textDecoration: "none",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive("/login")) {
+                      e.target.style.color = "#111827";
+                      e.target.style.background = "#f3f4f6";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive("/login")) {
+                      e.target.style.color = "#6b7280";
+                      e.target.style.background = "transparent";
+                    }
+                  }}
                 >
-                  <FaSignInAlt className="text-sm" />
                   Login
-                  {isActive("/login") && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-blue-600 rounded-full"
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    />
-                  )}
                 </Link>
                 <Link
                   to="/signup"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40"
+                  style={{
+                    padding: "8px 20px",
+                    borderRadius: "8px",
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    color: "white",
+                    background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+                    textDecoration: "none",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = "scale(1.02)";
+                    e.target.style.boxShadow = "0 4px 12px rgba(37,99,235,0.3)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = "scale(1)";
+                    e.target.style.boxShadow = "none";
+                  }}
                 >
-                  <FaUserPlus className="text-sm" />
-                  Signup
+                  Get Started
                 </Link>
-              </>
+              </div>
             )}
 
             {user && (
-              <div className="relative">
+              <div style={{ position: "relative", marginLeft: "8px" }}>
                 <button
                   onClick={() => setShowDropdown(!showDropdown)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    padding: "8px 16px",
+                    borderRadius: "8px",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    color: "#6b7280",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = "#111827";
+                    e.target.style.background = "#f3f4f6";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = "#6b7280";
+                    e.target.style.background = "transparent";
+                  }}
                 >
-                  <span className="flex items-center gap-2">
+                  <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                     {getRoleIcon()}
-                    <span className="hidden md:inline">{getRoleLabel()}</span>
+                    <span style={{ display: "none" }}>{getRoleLabel()}</span>
                   </span>
-                  <FaChevronDown className={`text-xs transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
+                  <FaChevronDown style={{
+                    fontSize: "10px",
+                    transition: "transform 0.2s",
+                    transform: showDropdown ? "rotate(180deg)" : "rotate(0)"
+                  }} />
                 </button>
 
                 {showDropdown && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5"
-                  >
-                    <div className="px-4 py-2 border-b border-gray-100">
-                      <p className="text-xs text-gray-500">Signed in as</p>
-                      <p className="text-sm font-semibold text-gray-900 truncate">
+                  <div style={{
+                    position: "absolute",
+                    right: 0,
+                    marginTop: "8px",
+                    width: "224px",
+                    background: "white",
+                    borderRadius: "12px",
+                    boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+                    border: "1px solid #f3f4f6",
+                    padding: "6px 0"
+                  }}>
+                    <div style={{
+                      padding: "8px 16px",
+                      borderBottom: "1px solid #f3f4f6"
+                    }}>
+                      <p style={{ fontSize: "12px", color: "#9ca3af" }}>Signed in as</p>
+                      <p style={{ fontSize: "14px", fontWeight: "600", color: "#111827" }}>
                         {user.full_name || user.username}
                       </p>
                     </div>
@@ -193,9 +298,26 @@ export default function Navbar() {
                       <Link
                         to={getDashboardLink()}
                         onClick={() => setShowDropdown(false)}
-                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "12px",
+                          padding: "10px 16px",
+                          fontSize: "14px",
+                          color: "#6b7280",
+                          textDecoration: "none",
+                          transition: "all 0.2s"
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.color = "#111827";
+                          e.target.style.background = "#f3f4f6";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.color = "#6b7280";
+                          e.target.style.background = "transparent";
+                        }}
                       >
-                        <FaTachometerAlt className="text-sm" />
+                        <FaTachometerAlt style={{ fontSize: "14px" }} />
                         Dashboard
                       </Link>
                     )}
@@ -203,31 +325,90 @@ export default function Navbar() {
                     <Link
                       to="/profile"
                       onClick={() => setShowDropdown(false)}
-                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        padding: "10px 16px",
+                        fontSize: "14px",
+                        color: "#6b7280",
+                        textDecoration: "none",
+                        transition: "all 0.2s"
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.color = "#111827";
+                        e.target.style.background = "#f3f4f6";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.color = "#6b7280";
+                        e.target.style.background = "transparent";
+                      }}
                     >
-                      <FaUser className="text-sm" />
+                      <FaUser style={{ fontSize: "14px" }} />
                       Profile
                     </Link>
                     
                     <Link
                       to="/settings"
                       onClick={() => setShowDropdown(false)}
-                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        padding: "10px 16px",
+                        fontSize: "14px",
+                        color: "#6b7280",
+                        textDecoration: "none",
+                        transition: "all 0.2s"
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.color = "#111827";
+                        e.target.style.background = "#f3f4f6";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.color = "#6b7280";
+                        e.target.style.background = "transparent";
+                      }}
                     >
-                      <FaCog className="text-sm" />
+                      <FaCog style={{ fontSize: "14px" }} />
                       Settings
                     </Link>
                     
-                    <div className="border-t border-gray-100 mt-1 pt-1">
+                    <div style={{
+                      borderTop: "1px solid #f3f4f6",
+                      marginTop: "4px",
+                      paddingTop: "4px"
+                    }}>
                       <button
                         onClick={logout}
-                        className="flex items-center gap-3 px-4 py-2.5 w-full text-sm text-red-600 hover:text-red-700 hover:bg-red-50 transition"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "12px",
+                          padding: "10px 16px",
+                          width: "100%",
+                          fontSize: "14px",
+                          color: "#dc2626",
+                          background: "transparent",
+                          border: "none",
+                          cursor: "pointer",
+                          transition: "all 0.2s",
+                          textAlign: "left"
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.color = "#b91c1c";
+                          e.target.style.background = "#fef2f2";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.color = "#dc2626";
+                          e.target.style.background = "transparent";
+                        }}
                       >
-                        <FaSignOutAlt className="text-sm" />
+                        <FaSignOutAlt style={{ fontSize: "14px" }} />
                         Logout
                       </button>
                     </div>
-                  </motion.div>
+                  </div>
                 )}
               </div>
             )}
@@ -236,39 +417,65 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden inline-flex items-center justify-center p-2.5 rounded-lg hover:bg-gray-50 transition"
-            aria-label="Toggle menu"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "10px",
+              borderRadius: "8px",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              transition: "all 0.2s"
+            }}
+            onMouseEnter={(e) => e.target.style.background = "#f3f4f6"}
+            onMouseLeave={(e) => e.target.style.background = "transparent"}
           >
-            {isOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
+            {isOpen ? <FaTimes style={{ fontSize: "18px" }} /> : <FaBars style={{ fontSize: "18px" }} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        <motion.div
-          initial={false}
-          animate={{
-            height: isOpen ? "auto" : 0,
-            opacity: isOpen ? 1 : 0,
-          }}
-          transition={{ duration: 0.25, ease: "easeInOut" }}
-          className="lg:hidden overflow-hidden border-t border-gray-100"
-        >
-          <div className="py-4 space-y-1">
+        <div style={{
+          overflow: "hidden",
+          borderTop: isOpen ? "1px solid #f3f4f6" : "none",
+          maxHeight: isOpen ? "1000px" : "0",
+          opacity: isOpen ? 1 : 0,
+          transition: "all 0.3s ease"
+        }}>
+          <div style={{ padding: "16px 0" }}>
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition ${
-                  isActive(link.to)
-                    ? "text-blue-600 bg-blue-50"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                }`}
+                style={{
+                  display: "block",
+                  padding: "12px 16px",
+                  borderRadius: "8px",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  color: isActive(link.to) ? "#2563eb" : "#6b7280",
+                  background: isActive(link.to) ? "#eff6ff" : "transparent",
+                  textDecoration: "none",
+                  transition: "all 0.2s"
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive(link.to)) {
+                    e.target.style.color = "#111827";
+                    e.target.style.background = "#f3f4f6";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive(link.to)) {
+                    e.target.style.color = "#6b7280";
+                    e.target.style.background = "transparent";
+                  }
+                }}
               >
-                {link.icon}
                 {link.label}
                 {isActive(link.to) && (
-                  <span className="ml-auto text-blue-600">●</span>
+                  <span style={{ float: "right", color: "#2563eb" }}>●</span>
                 )}
               </Link>
             ))}
@@ -278,24 +485,58 @@ export default function Navbar() {
                 <Link
                   to="/login"
                   onClick={() => setIsOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition ${
-                    isActive("/login")
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                  }`}
+                  style={{
+                    display: "block",
+                    padding: "12px 16px",
+                    borderRadius: "8px",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    color: isActive("/login") ? "#2563eb" : "#6b7280",
+                    background: isActive("/login") ? "#eff6ff" : "transparent",
+                    textDecoration: "none",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive("/login")) {
+                      e.target.style.color = "#111827";
+                      e.target.style.background = "#f3f4f6";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive("/login")) {
+                      e.target.style.color = "#6b7280";
+                      e.target.style.background = "transparent";
+                    }
+                  }}
                 >
-                  <FaSignInAlt className="text-sm" />
                   Login
                   {isActive("/login") && (
-                    <span className="ml-auto text-blue-600">●</span>
+                    <span style={{ float: "right", color: "#2563eb" }}>●</span>
                   )}
                 </Link>
                 <Link
                   to="/signup"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-3 mx-4 px-4 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition"
+                  style={{
+                    display: "block",
+                    margin: "0 16px",
+                    padding: "12px 16px",
+                    borderRadius: "8px",
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    color: "white",
+                    background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+                    textDecoration: "none",
+                    textAlign: "center",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = "scale(1.02)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = "scale(1)";
+                  }}
                 >
-                  <FaUserPlus className="text-sm" />
                   Signup
                 </Link>
               </>
@@ -303,9 +544,12 @@ export default function Navbar() {
 
             {user && (
               <>
-                <div className="px-4 py-2 border-b border-gray-100">
-                  <p className="text-xs text-gray-500">Signed in as</p>
-                  <p className="text-sm font-semibold text-gray-900 truncate">
+                <div style={{
+                  padding: "8px 16px",
+                  borderBottom: "1px solid #f3f4f6"
+                }}>
+                  <p style={{ fontSize: "12px", color: "#9ca3af" }}>Signed in as</p>
+                  <p style={{ fontSize: "14px", fontWeight: "600", color: "#111827" }}>
                     {user.full_name || user.username}
                   </p>
                 </div>
@@ -314,9 +558,23 @@ export default function Navbar() {
                   <Link
                     to={getDashboardLink()}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-4 py-3 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
+                    style={{
+                      display: "block",
+                      padding: "12px 16px",
+                      fontSize: "14px",
+                      color: "#6b7280",
+                      textDecoration: "none",
+                      transition: "all 0.2s"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.color = "#111827";
+                      e.target.style.background = "#f3f4f6";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.color = "#6b7280";
+                      e.target.style.background = "transparent";
+                    }}
                   >
-                    <FaTachometerAlt className="text-sm" />
                     Dashboard
                   </Link>
                 )}
@@ -324,9 +582,23 @@ export default function Navbar() {
                 <Link
                   to="/profile"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition"
+                  style={{
+                    display: "block",
+                    padding: "12px 16px",
+                    fontSize: "14px",
+                    color: "#6b7280",
+                    textDecoration: "none",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = "#111827";
+                    e.target.style.background = "#f3f4f6";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = "#6b7280";
+                    e.target.style.background = "transparent";
+                  }}
                 >
-                  <FaUser className="text-sm" />
                   Profile
                 </Link>
                 
@@ -335,15 +607,33 @@ export default function Navbar() {
                     setIsOpen(false);
                     logout();
                   }}
-                  className="flex items-center gap-3 px-4 py-3 w-full text-sm text-red-600 hover:text-red-700 hover:bg-red-50 transition"
+                  style={{
+                    display: "block",
+                    width: "100%",
+                    padding: "12px 16px",
+                    fontSize: "14px",
+                    color: "#dc2626",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    textAlign: "left",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = "#b91c1c";
+                    e.target.style.background = "#fef2f2";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = "#dc2626";
+                    e.target.style.background = "transparent";
+                  }}
                 >
-                  <FaSignOutAlt className="text-sm" />
                   Logout
                 </button>
               </>
             )}
           </div>
-        </motion.div>
+        </div>
       </div>
     </nav>
   );
