@@ -1,45 +1,77 @@
 import { Link } from 'react-router-dom';
+import { 
+  FaBrain, 
+  FaHome, 
+  FaInfoCircle, 
+  FaPhone, 
+  FaQuestionCircle, 
+  FaShieldAlt, 
+  FaFileAlt,
+  FaUserGraduate,
+  FaCommentDots,
+  FaChartLine,
+  FaClock,
+  FaUsers,
+  FaCalendarCheck,
+  FaBook,
+  FaStar,
+  FaCheckCircle,
+  FaHeart,
+  FaHandsHelping,
+  FaGraduationCap,
+  FaUserMd,
+  FaChalkboardTeacher,
+  FaUserFriends,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaArrowRight,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin
+} from 'react-icons/fa';
 
 export default function HomePage() {
   const services = [
-    { icon: "🧠", title: "Personalized Counselling", desc: "One-on-one sessions with experienced mental health professionals", color: "#2563eb" },
-    { icon: "💬", title: "Real-time Chat Support", desc: "Instant messaging for immediate emotional support", color: "#7c3aed" },
-    { icon: "📈", title: "Progress Tracking", desc: "Monitor your emotional wellbeing and growth", color: "#059669" },
-    { icon: "🕐", title: "24/7 Crisis Support", desc: "Emergency help available anytime, anywhere", color: "#dc2626" },
-    { icon: "👥", title: "Group Therapy Sessions", desc: "Connect with peers in a supportive environment", color: "#f59e0b" },
-    { icon: "📚", title: "Wellness Workshops", desc: "Learn coping strategies and life skills", color: "#0891b2" }
+    { icon: <FaBrain className="text-3xl" />, title: "Personalized Counselling", desc: "One-on-one sessions with experienced mental health professionals", color: "#2563eb" },
+    { icon: <FaCommentDots className="text-3xl" />, title: "Real-time Chat Support", desc: "Instant messaging for immediate emotional support", color: "#7c3aed" },
+    { icon: <FaChartLine className="text-3xl" />, title: "Progress Tracking", desc: "Monitor your emotional wellbeing and growth", color: "#059669" },
+    { icon: <FaClock className="text-3xl" />, title: "24/7 Crisis Support", desc: "Emergency help available anytime, anywhere", color: "#dc2626" },
+    { icon: <FaUsers className="text-3xl" />, title: "Group Therapy Sessions", desc: "Connect with peers in a supportive environment", color: "#f59e0b" },
+    { icon: <FaBook className="text-3xl" />, title: "Wellness Workshops", desc: "Learn coping strategies and life skills", color: "#0891b2" }
   ];
 
   const quickLinks = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About Us" },
-    { to: "/contact", label: "Contact" },
-    { to: "/faq", label: "FAQs" },
-    { to: "/privacy", label: "Privacy Policy" },
-    { to: "/terms", label: "Terms of Service" }
+    { to: "/", label: "Home", icon: <FaHome className="mr-1" /> },
+    { to: "/about", label: "About Us", icon: <FaInfoCircle className="mr-1" /> },
+    { to: "/contact", label: "Contact", icon: <FaPhone className="mr-1" /> },
+    { to: "/faq", label: "FAQs", icon: <FaQuestionCircle className="mr-1" /> },
+    { to: "/privacy", label: "Privacy Policy", icon: <FaShieldAlt className="mr-1" /> },
+    { to: "/terms", label: "Terms of Service", icon: <FaFileAlt className="mr-1" /> }
   ];
 
   const teamMembers = [
-    { name: "Dr. Ahmed Noor", role: "Clinical Psychologist", icon: "👨‍⚕️", desc: "15+ years of experience in student mental health" },
-    { name: "Dr. Fatima Hassan", role: "Senior Counsellor", icon: "👩‍⚕️", desc: "Specializing in anxiety and depression" },
-    { name: "Mohamed Omar", role: "Student Support Specialist", icon: "🧑‍🏫", desc: "Passionate about student wellbeing" },
-    { name: "Aisha Abdullahi", role: "Mental Health Advocate", icon: "👩‍🎓", desc: "Peer support and community building" }
+    { name: "Dr. Ahmed Noor", role: "Clinical Psychologist", icon: <FaUserMd className="text-4xl" />, desc: "15+ years of experience in student mental health" },
+    { name: "Dr. Fatima Hassan", role: "Senior Counsellor", icon: <FaUserGraduate className="text-4xl" />, desc: "Specializing in anxiety and depression" },
+    { name: "Mohamed Omar", role: "Student Support Specialist", icon: <FaChalkboardTeacher className="text-4xl" />, desc: "Passionate about student wellbeing" },
+    { name: "Aisha Abdullahi", role: "Mental Health Advocate", icon: <FaUserFriends className="text-4xl" />, desc: "Peer support and community building" }
   ];
 
   const resources = [
-    { title: "Crisis Helpline", desc: "24/7 emergency support for immediate help", icon: "📞", link: "/crisis" },
-    { title: "Self-Help Guides", desc: "Downloadable resources for mental wellness", icon: "📖", link: "/resources" },
-    { title: "Student Stories", desc: "Real stories from students who found help", icon: "💭", link: "/stories" },
-    { title: "Wellness Tips", desc: "Daily tips for maintaining mental health", icon: "💡", link: "/tips" }
+    { title: "Crisis Helpline", desc: "24/7 emergency support for immediate help", icon: <FaPhoneAlt className="text-3xl" />, link: "/crisis" },
+    { title: "Self-Help Guides", desc: "Downloadable resources for mental wellness", icon: <FaBook className="text-3xl" />, link: "/resources" },
+    { title: "Student Stories", desc: "Real stories from students who found help", icon: <FaHeart className="text-3xl" />, link: "/stories" },
+    { title: "Wellness Tips", desc: "Daily tips for maintaining mental health", icon: <FaCheckCircle className="text-3xl" />, link: "/tips" }
   ];
 
   const benefits = [
-    { icon: "🔒", title: "100% Confidential", desc: "Your privacy is our priority. All sessions are completely confidential." },
-    { icon: "👨‍⚕️", title: "Expert Counsellors", desc: "Connect with licensed and experienced mental health professionals." },
-    { icon: "⏰", title: "24/7 Availability", desc: "Get support whenever you need it, day or night." },
-    { icon: "🌟", title: "Quality Care", desc: "We maintain the highest standards of mental health care." },
-    { icon: "💪", title: "Student-Centered", desc: "Designed specifically for students' unique needs." },
-    { icon: "🌍", title: "Community Support", desc: "Join a supportive community of students." }
+    { icon: <FaShieldAlt className="text-3xl" />, title: "100% Confidential", desc: "Your privacy is our priority. All sessions are completely confidential." },
+    { icon: <FaUserMd className="text-3xl" />, title: "Expert Counsellors", desc: "Connect with licensed and experienced mental health professionals." },
+    { icon: <FaClock className="text-3xl" />, title: "24/7 Availability", desc: "Get support whenever you need it, day or night." },
+    { icon: <FaStar className="text-3xl" />, title: "Quality Care", desc: "We maintain the highest standards of mental health care." },
+    { icon: <FaUserGraduate className="text-3xl" />, title: "Student-Centered", desc: "Designed specifically for students' unique needs." },
+    { icon: <FaUsers className="text-3xl" />, title: "Community Support", desc: "Join a supportive community of students." }
   ];
 
   return (
@@ -154,7 +186,9 @@ export default function HomePage() {
               alignItems: "center",
               justifyContent: "center",
               fontSize: "18px"
-            }}>🧠</div>
+            }}>
+              <FaBrain />
+            </div>
             <span style={{
               fontSize: "20px",
               fontWeight: "700",
@@ -174,11 +208,14 @@ export default function HomePage() {
                     fontSize: "14px",
                     color: "#6b7280",
                     textDecoration: "none",
-                    transition: "color 0.2s"
+                    transition: "color 0.2s",
+                    display: "flex",
+                    alignItems: "center"
                   }}
                   onMouseEnter={(e) => e.target.style.color = "#2563eb"}
                   onMouseLeave={(e) => e.target.style.color = "#6b7280"}
                 >
+                  {link.icon}
                   {link.label}
                 </Link>
               ))}
@@ -211,7 +248,10 @@ export default function HomePage() {
                 padding: "8px 20px",
                 borderRadius: "8px",
                 textDecoration: "none",
-                transition: "all 0.2s"
+                transition: "all 0.2s",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px"
               }}
               onMouseEnter={(e) => {
                 e.target.style.transform = "scale(1.02)";
@@ -221,6 +261,7 @@ export default function HomePage() {
                 e.target.style.transform = "scale(1)";
                 e.target.style.boxShadow = "none";
               }}>
+                <FaCheckCircle className="text-sm" />
                 Get Started
               </Link>
             </div>
@@ -318,7 +359,8 @@ export default function HomePage() {
                 e.target.style.transform = "scale(1)";
                 e.target.style.boxShadow = "0 4px 12px rgba(37,99,235,0.25)";
               }}>
-                Get Started →
+                <FaArrowRight />
+                Get Started
               </Link>
               <Link to="/about" style={{
                 background: "transparent",
@@ -346,14 +388,13 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Trust Badges */}
             <div style={{
               display: "flex",
               gap: "24px",
               marginTop: "40px"
             }}>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span style={{ fontSize: "20px" }}>⭐</span>
+                <FaStar className="text-yellow-500 text-xl" />
                 <div>
                   <div style={{ fontWeight: "600", color: "#111827" }}>4.9/5</div>
                   <div style={{ fontSize: "12px", color: "#6b7280" }}>Student Rating</div>
@@ -361,7 +402,7 @@ export default function HomePage() {
               </div>
               <div style={{ width: "1px", background: "#e5e7eb" }}></div>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span style={{ fontSize: "20px" }}>👥</span>
+                <FaUsers className="text-blue-500 text-xl" />
                 <div>
                   <div style={{ fontWeight: "600", color: "#111827" }}>500+</div>
                   <div style={{ fontSize: "12px", color: "#6b7280" }}>Students Helped</div>
@@ -369,7 +410,7 @@ export default function HomePage() {
               </div>
               <div style={{ width: "1px", background: "#e5e7eb" }}></div>
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span style={{ fontSize: "20px" }}>🏆</span>
+                <FaStar className="text-yellow-500 text-xl" />
                 <div>
                   <div style={{ fontWeight: "600", color: "#111827" }}>98%</div>
                   <div style={{ fontSize: "12px", color: "#6b7280" }}>Success Rate</div>
@@ -384,8 +425,10 @@ export default function HomePage() {
                 background: "#dbeafe",
                 padding: "8px",
                 borderRadius: "8px",
-                fontSize: "20px"
-              }}>👥</div>
+                color: "#2563eb"
+              }}>
+                <FaUsers className="text-xl" />
+              </div>
               <h2 style={{ fontSize: "20px", fontWeight: "700", color: "#111827" }}>Quick Support</h2>
               <span style={{
                 marginLeft: "auto",
@@ -457,10 +500,10 @@ export default function HomePage() {
             gap: "24px"
           }}>
             {[
-              { value: "500+", label: "Students Helped", icon: "👨‍🎓" },
-              { value: "50+", label: "Counsellors", icon: "👨‍⚕️" },
-              { value: "98%", label: "Satisfaction Rate", icon: "⭐" },
-              { value: "24/7", label: "Support Available", icon: "🕐" }
+              { value: "500+", label: "Students Helped", icon: <FaUserGraduate className="text-3xl" /> },
+              { value: "50+", label: "Counsellors", icon: <FaUserMd className="text-3xl" /> },
+              { value: "98%", label: "Satisfaction Rate", icon: <FaStar className="text-3xl" /> },
+              { value: "24/7", label: "Support Available", icon: <FaClock className="text-3xl" /> }
             ].map((stat) => (
               <div key={stat.label} style={{
                 textAlign: "center",
@@ -478,7 +521,7 @@ export default function HomePage() {
                 e.target.style.borderColor = "transparent";
                 e.target.style.boxShadow = "none";
               }}>
-                <div style={{ fontSize: "32px", marginBottom: "8px" }}>{stat.icon}</div>
+                <div style={{ color: "#2563eb", marginBottom: "8px" }}>{stat.icon}</div>
                 <div style={{ fontSize: "36px", fontWeight: "700", color: "#2563eb" }}>{stat.value}</div>
                 <p style={{ fontSize: "14px", color: "#6b7280", marginTop: "4px" }}>{stat.label}</p>
               </div>
@@ -512,12 +555,12 @@ export default function HomePage() {
             {services.map((service) => (
               <div key={service.title} className="card" style={{ padding: "32px" }}>
                 <div style={{
-                  fontSize: "32px",
-                  marginBottom: "12px",
                   display: "inline-block",
                   padding: "12px",
                   background: `${service.color}10`,
-                  borderRadius: "12px"
+                  borderRadius: "12px",
+                  color: service.color,
+                  marginBottom: "12px"
                 }}>{service.icon}</div>
                 <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#111827" }}>{service.title}</h3>
                 <p style={{ fontSize: "14px", color: "#6b7280", marginTop: "8px", lineHeight: "1.6" }}>{service.desc}</p>
@@ -534,7 +577,7 @@ export default function HomePage() {
                 }}
                 onMouseEnter={(e) => e.target.style.gap = "8px"}
                 onMouseLeave={(e) => e.target.style.gap = "4px"}>
-                  Learn More →
+                  Learn More <FaArrowRight className="text-xs" />
                 </Link>
               </div>
             ))}
@@ -567,9 +610,8 @@ export default function HomePage() {
             {benefits.map((benefit) => (
               <div key={benefit.title} className="card" style={{ padding: "32px", textAlign: "center" }}>
                 <div style={{
-                  fontSize: "40px",
-                  marginBottom: "12px",
-                  display: "inline-block"
+                  color: "#2563eb",
+                  marginBottom: "12px"
                 }}>{benefit.icon}</div>
                 <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#111827" }}>{benefit.title}</h3>
                 <p style={{ fontSize: "14px", color: "#6b7280", marginTop: "8px", lineHeight: "1.6" }}>{benefit.desc}</p>
@@ -602,10 +644,10 @@ export default function HomePage() {
             gap: "24px"
           }}>
             {[
-              { step: "01", title: "Create Account", desc: "Sign up in 2 minutes with your student email", icon: "📝" },
-              { step: "02", title: "Choose Counselor", desc: "Browse profiles and find your perfect match", icon: "👥" },
-              { step: "03", title: "Book Session", desc: "Schedule at a time that works for you", icon: "📅" },
-              { step: "04", title: "Start Healing", desc: "Begin your journey to mental wellness", icon: "💚" }
+              { step: "01", title: "Create Account", desc: "Sign up in 2 minutes with your student email", icon: <FaUserGraduate className="text-3xl" /> },
+              { step: "02", title: "Choose Counselor", desc: "Browse profiles and find your perfect match", icon: <FaUsers className="text-3xl" /> },
+              { step: "03", title: "Book Session", desc: "Schedule at a time that works for you", icon: <FaCalendarCheck className="text-3xl" /> },
+              { step: "04", title: "Start Healing", desc: "Begin your journey to mental wellness", icon: <FaHeart className="text-3xl" /> }
             ].map((item) => (
               <div key={item.step} style={{ textAlign: "center" }}>
                 <div style={{
@@ -618,7 +660,6 @@ export default function HomePage() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "32px",
                   boxShadow: "0 4px 12px rgba(37,99,235,0.25)",
                   transition: "transform 0.3s"
                 }}
@@ -665,7 +706,7 @@ export default function HomePage() {
             {teamMembers.map((member) => (
               <div key={member.name} className="card" style={{ textAlign: "center", padding: "32px" }}>
                 <div style={{
-                  fontSize: "48px",
+                  color: "#2563eb",
                   marginBottom: "12px"
                 }}>{member.icon}</div>
                 <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#111827" }}>{member.name}</h3>
@@ -703,7 +744,7 @@ export default function HomePage() {
               <Link key={resource.title} to={resource.link} style={{ textDecoration: "none" }}>
                 <div className="card" style={{ padding: "32px", textAlign: "center", height: "100%" }}>
                   <div style={{
-                    fontSize: "40px",
+                    color: "#2563eb",
                     marginBottom: "12px"
                   }}>{resource.icon}</div>
                   <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#111827" }}>{resource.title}</h3>
@@ -712,8 +753,14 @@ export default function HomePage() {
                     marginTop: "16px",
                     color: "#2563eb",
                     fontSize: "14px",
-                    fontWeight: "500"
-                  }}>Learn More →</div>
+                    fontWeight: "500",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "4px"
+                  }}>
+                    Learn More <FaArrowRight className="text-xs" />
+                  </div>
                 </div>
               </Link>
             ))}
@@ -744,17 +791,20 @@ export default function HomePage() {
             gap: "24px"
           }}>
             {[
-              { name: "Mohamed Omar", role: "Student", text: "The counselling services helped me overcome anxiety and perform better in my studies. I'm now more confident and focused.", icon: "👨‍🎓", rating: 5 },
-              { name: "Fatuma Hassan", role: "Student", text: "I found a safe space to share my feelings. The counsellors are truly understanding and helped me navigate through difficult times.", icon: "👩‍🎓", rating: 5 },
-              { name: "Dr. Ahmed Noor", role: "Counsellor", text: "Seeing students transform and grow is the most rewarding part of my work. Every session brings new hope and healing.", icon: "👨‍⚕️", rating: 5 }
+              { name: "Mohamed Omar", role: "Student", text: "The counselling services helped me overcome anxiety and perform better in my studies. I'm now more confident and focused.", icon: <FaUserGraduate className="text-4xl" />, rating: 5 },
+              { name: "Fatuma Hassan", role: "Student", text: "I found a safe space to share my feelings. The counsellors are truly understanding and helped me navigate through difficult times.", icon: <FaUserFriends className="text-4xl" />, rating: 5 },
+              { name: "Dr. Ahmed Noor", role: "Counsellor", text: "Seeing students transform and grow is the most rewarding part of my work. Every session brings new hope and healing.", icon: <FaUserMd className="text-4xl" />, rating: 5 }
             ].map((item) => (
               <div key={item.name} className="card" style={{ padding: "32px" }}>
-                <div style={{ display: "flex", gap: "2px", marginBottom: "12px" }}>
+                <div style={{ display: "flex", gap: "2px", marginBottom: "12px", color: "#f59e0b" }}>
                   {[...Array(item.rating)].map((_, i) => (
-                    <span key={i} style={{ color: "#f59e0b", fontSize: "16px" }}>★</span>
+                    <FaStar key={i} />
                   ))}
                 </div>
-                <div style={{ fontSize: "32px", marginBottom: "12px" }}>{item.icon}</div>
+                <div style={{
+                  color: "#2563eb",
+                  marginBottom: "12px"
+                }}>{item.icon}</div>
                 <p style={{ color: "#6b7280", lineHeight: "1.6", fontStyle: "italic" }}>"{item.text}"</p>
                 <hr style={{ margin: "16px 0", border: "none", borderTop: "1px solid #f3f4f6" }} />
                 <div>
@@ -809,7 +859,7 @@ export default function HomePage() {
             }}
             onMouseEnter={(e) => e.target.style.gap = "12px"}
             onMouseLeave={(e) => e.target.style.gap = "8px"}>
-              View All FAQs →
+              View All FAQs <FaArrowRight className="text-xs" />
             </Link>
           </div>
         </div>
@@ -882,7 +932,10 @@ export default function HomePage() {
               fontWeight: "700",
               textDecoration: "none",
               boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-              transition: "all 0.2s"
+              transition: "all 0.2s",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px"
             }}
             onMouseEnter={(e) => {
               e.target.style.transform = "scale(1.05)";
@@ -892,6 +945,7 @@ export default function HomePage() {
               e.target.style.transform = "scale(1)";
               e.target.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
             }}>
+              <FaArrowRight />
               Start Your Journey
             </Link>
             <Link to="/contact" style={{
@@ -928,7 +982,7 @@ export default function HomePage() {
               color: "#bfdbfe",
               fontSize: "14px"
             }}>
-              <span style={{ color: "#22c55e" }}>✓</span> Free Registration
+              <FaCheckCircle className="text-green-400" /> Free Registration
             </span>
             <span style={{
               display: "flex",
@@ -937,7 +991,7 @@ export default function HomePage() {
               color: "#bfdbfe",
               fontSize: "14px"
             }}>
-              <span style={{ color: "#22c55e" }}>✓</span> Confidential & Private
+              <FaCheckCircle className="text-green-400" /> Confidential & Private
             </span>
             <span style={{
               display: "flex",
@@ -946,7 +1000,7 @@ export default function HomePage() {
               color: "#bfdbfe",
               fontSize: "14px"
             }}>
-              <span style={{ color: "#22c55e" }}>✓</span> 24/7 Support Available
+              <FaCheckCircle className="text-green-400" /> 24/7 Support Available
             </span>
           </div>
         </div>
@@ -966,8 +1020,9 @@ export default function HomePage() {
           gap: "32px"
         }}>
           <div>
-            <h2 style={{ fontSize: "20px", fontWeight: "700", marginBottom: "12px" }}>
-              🧠 Student<span style={{ color: "#60a5fa" }}>Mental</span>
+            <h2 style={{ fontSize: "20px", fontWeight: "700", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
+              <FaBrain className="text-blue-400" />
+              Student<span style={{ color: "#60a5fa" }}>Mental</span>
             </h2>
             <p style={{ color: "#9ca3af", fontSize: "14px", lineHeight: "1.6" }}>
               Empowering students with professional mental health support and counselling services.
@@ -977,37 +1032,114 @@ export default function HomePage() {
               gap: "12px",
               marginTop: "16px"
             }}>
-              {["📘", "🐦", "📸", "🔗"].map((icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "36px",
-                    height: "36px",
-                    borderRadius: "50%",
-                    background: "#1f2937",
-                    color: "#9ca3af",
-                    textDecoration: "none",
-                    transition: "all 0.3s ease",
-                    fontSize: "16px"
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = "#2563eb";
-                    e.target.style.color = "white";
-                    e.target.style.transform = "translateY(-3px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = "#1f2937";
-                    e.target.style.color = "#9ca3af";
-                    e.target.style.transform = "translateY(0)";
-                  }}
-                >
-                  {icon}
-                </a>
-              ))}
+              <a
+                href="#"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  background: "#1f2937",
+                  color: "#9ca3af",
+                  textDecoration: "none",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = "#2563eb";
+                  e.target.style.color = "white";
+                  e.target.style.transform = "translateY(-3px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = "#1f2937";
+                  e.target.style.color = "#9ca3af";
+                  e.target.style.transform = "translateY(0)";
+                }}
+              >
+                <FaFacebook />
+              </a>
+              <a
+                href="#"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  background: "#1f2937",
+                  color: "#9ca3af",
+                  textDecoration: "none",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = "#2563eb";
+                  e.target.style.color = "white";
+                  e.target.style.transform = "translateY(-3px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = "#1f2937";
+                  e.target.style.color = "#9ca3af";
+                  e.target.style.transform = "translateY(0)";
+                }}
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="#"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  background: "#1f2937",
+                  color: "#9ca3af",
+                  textDecoration: "none",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = "#2563eb";
+                  e.target.style.color = "white";
+                  e.target.style.transform = "translateY(-3px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = "#1f2937";
+                  e.target.style.color = "#9ca3af";
+                  e.target.style.transform = "translateY(0)";
+                }}
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="#"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "36px",
+                  height: "36px",
+                  borderRadius: "50%",
+                  background: "#1f2937",
+                  color: "#9ca3af",
+                  textDecoration: "none",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = "#2563eb";
+                  e.target.style.color = "white";
+                  e.target.style.transform = "translateY(-3px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = "#1f2937";
+                  e.target.style.color = "#9ca3af";
+                  e.target.style.transform = "translateY(0)";
+                }}
+              >
+                <FaLinkedin />
+              </a>
             </div>
           </div>
 
@@ -1029,10 +1161,14 @@ export default function HomePage() {
                     color: "#9ca3af",
                     textDecoration: "none",
                     fontSize: "14px",
-                    transition: "color 0.2s"
+                    transition: "color 0.2s",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px"
                   }}
                   onMouseEnter={(e) => e.target.style.color = "white"}
                   onMouseLeave={(e) => e.target.style.color = "#9ca3af"}>
+                    {link.icon}
                     {link.label}
                   </Link>
                 </li>
@@ -1058,10 +1194,14 @@ export default function HomePage() {
                     color: "#9ca3af",
                     textDecoration: "none",
                     fontSize: "14px",
-                    transition: "color 0.2s"
+                    transition: "color 0.2s",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px"
                   }}
                   onMouseEnter={(e) => e.target.style.color = "white"}
                   onMouseLeave={(e) => e.target.style.color = "#9ca3af"}>
+                    {service.icon}
                     {service.title}
                   </Link>
                 </li>
@@ -1082,10 +1222,10 @@ export default function HomePage() {
             </h3>
             <ul style={{ listStyle: "none", padding: 0, color: "#9ca3af", fontSize: "14px", lineHeight: "1.8" }}>
               <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span>📍</span> Garissa University, Kenya
+                <FaMapMarkerAlt className="text-blue-400" /> Garissa University, Kenya
               </li>
               <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span>📧</span>
+                <FaEnvelope className="text-blue-400" />
                 <a href="mailto:support@studentmental.com" style={{
                   color: "#9ca3af",
                   textDecoration: "none",
@@ -1097,7 +1237,7 @@ export default function HomePage() {
                 </a>
               </li>
               <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span>📞</span>
+                <FaPhoneAlt className="text-blue-400" />
                 <a href="tel:+1234567890" style={{
                   color: "#9ca3af",
                   textDecoration: "none",
@@ -1109,7 +1249,7 @@ export default function HomePage() {
                 </a>
               </li>
               <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span>🕐</span> 24/7 Support Available
+                <FaClock className="text-blue-400" /> 24/7 Support Available
               </li>
             </ul>
           </div>
