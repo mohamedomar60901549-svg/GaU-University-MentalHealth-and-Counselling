@@ -125,29 +125,18 @@ export default function Navbar() {
               }}>
                 Student<span style={{ color: "#2563eb" }}>Mental</span>
               </span>
-              <span style={{
-                marginLeft: "8px",
-                fontSize: "12px",
-                fontWeight: "500",
-                color: "#9ca3af",
-                borderLeft: "1px solid #e5e7eb",
-                paddingLeft: "8px",
-                display: "none"
-              }}>
-                Health
-              </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div style={{
-            display: "none",
-            alignItems: "center",
-            gap: "4px",
-            "@media (min-width: 1024px)": {
-              display: "flex"
-            }
-          }}>
+          <div
+            style={{
+              display: "none",
+              alignItems: "center",
+              gap: "4px"
+            }}
+            className="desktop-nav"
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.to}
@@ -635,6 +624,15 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Add CSS for desktop navigation */}
+      <style>{`
+        @media (min-width: 1024px) {
+          .desktop-nav {
+            display: flex !important;
+          }
+        }
+      `}</style>
     </nav>
   );
 }

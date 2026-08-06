@@ -5,6 +5,9 @@ import UserLogin from "./pages/UserLogin";
 import UserSignup from "./pages/UserSignup";
 import StudentDashboard from "./pages/StudentDashboard";
 import CounsellorDashboard from "./pages/CounsellorDashboard";
+import FAQ from "./pages/FAQ";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -28,6 +31,9 @@ export default function App() {
             <Route path="/signup" element={<UserSignup />} />
             <Route path="/student" element={<StudentDashboard />} />
             <Route path="/counsellor" element={<CounsellorDashboard />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
 
