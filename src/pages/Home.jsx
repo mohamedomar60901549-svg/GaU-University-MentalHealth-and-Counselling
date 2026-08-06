@@ -38,11 +38,55 @@ export default function Home() {
     }
   };
 
+  const features = [
+    { icon: <Target className="size-8" />, title: "Personalized Matching", desc: "Expert counselors matched to your needs" },
+    { icon: <MessageCircle className="size-8" />, title: "Real-time Chat", desc: "Instant messaging for immediate support" },
+    { icon: <TrendingUp className="size-8" />, title: "Progress Tracking", desc: "Monitor your emotional wellbeing" },
+    { icon: <Shield className="size-8" />, title: "100% Confidential", desc: "Bank-level encryption for privacy" },
+    { icon: <Clock className="size-8" />, title: "24/7 Support", desc: "Help available anytime, anywhere" },
+    { icon: <Smartphone className="size-8" />, title: "Multi-Platform", desc: "Desktop, tablet, and mobile ready" }
+  ];
+
+  const steps = [
+    { icon: <UserPlus className="size-8" />, step: "1", title: "Create Account", desc: "Sign up in 2 minutes" },
+    { icon: <Users className="size-8" />, step: "2", title: "Choose Counselor", desc: "Browse expert profiles" },
+    { icon: <Calendar className="size-8" />, step: "3", title: "Book Session", desc: "Schedule at your time" },
+    { icon: <Heart className="size-8" />, step: "4", title: "Start Healing", desc: "Begin your journey" }
+  ];
+
+  const testimonials = [
+    { name: "Dr. Abdifatah Ibrahim", role: "Senior Counsellor", text: "This platform has revolutionized how I connect with students.", icon: "👨‍⚕️" },
+    { name: "Jamal Buthul", role: "Engineering Student", text: "The real-time chat feature was a game-changer for me.", icon: "👨‍🎓" },
+    { name: "Dr. Yussuf Gab", role: "Clinical Psychologist", text: "I've seen remarkable transformations in my students.", icon: "👨‍⚕️" }
+  ];
+
+  const stats = [
+    { value: "2+", label: "Expert Counsellors" },
+    { value: "1K+", label: "Happy Students" },
+    { value: "72%", label: "Success Rate" },
+    { value: "24/7", label: "Always Available" }
+  ];
+
+  const badges = [
+    { icon: <Target className="size-4" />, label: "Mission-Driven" },
+    { icon: <Award className="size-4" />, label: "Award-Winning" },
+    { icon: <Globe className="size-4" />, label: "Global Community" },
+    { icon: <Heart className="size-4" />, label: "Student-First" },
+    { icon: <Star className="size-4" />, label: "5-Star Rated" }
+  ];
+
+  const dashboardItems = [
+    { icon: <User className="size-5" />, label: "Active Counsellors", value: "12" },
+    { icon: <MessageCircle className="size-5" />, label: "Today's Sessions", value: "34" },
+    { icon: <Calendar className="size-5" />, label: "Appointments", value: "28" },
+    { icon: <Shield className="size-5" />, label: "Privacy Protected", value: "100%" }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-red-50">
       <Navbar />
 
-      {/* ================= HERO ================= */}
+      {/* Hero Section */}
       <section className="relative overflow-hidden pt-20">
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-10 left-5 w-64 h-64 bg-red-200/30 rounded-full blur-3xl" />
@@ -51,7 +95,6 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -89,14 +132,8 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-                {[
-                  { value: "2+", label: "Expert Counsellors" },
-                  { value: "1K+", label: "Happy Students" },
-                  { value: "72%", label: "Success Rate" },
-                  { value: "24/7", label: "Always Available" }
-                ].map((stat, i) => (
+                {stats.map((stat, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
@@ -111,7 +148,6 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right Content - Dashboard Preview */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -129,12 +165,7 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="space-y-4">
-                  {[
-                    { icon: <User className="size-5" />, label: "Active Counsellors", value: "12" },
-                    { icon: <MessageCircle className="size-5" />, label: "Today's Sessions", value: "34" },
-                    { icon: <Calendar className="size-5" />, label: "Appointments", value: "28" },
-                    { icon: <Shield className="size-5" />, label: "Privacy Protected", value: "100%" },
-                  ].map((item) => (
+                  {dashboardItems.map((item) => (
                     <div key={item.label} className="flex items-center justify-between border-b border-gray-100 pb-4 last:border-0">
                       <div className="flex items-center gap-3 text-gray-600">
                         {item.icon}
@@ -157,7 +188,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= FEATURES ================= */}
+      {/* Features Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -181,14 +212,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {[
-              { icon: <Target className="size-8" />, title: "Personalized Matching", desc: "Expert counselors matched to your needs" },
-              { icon: <MessageCircle className="size-8" />, title: "Real-time Chat", desc: "Instant messaging for immediate support" },
-              { icon: <TrendingUp className="size-8" />, title: "Progress Tracking", desc: "Monitor your emotional wellbeing" },
-              { icon: <Shield className="size-8" />, title: "100% Confidential", desc: "Bank-level encryption for privacy" },
-              { icon: <Clock className="size-8" />, title: "24/7 Support", desc: "Help available anytime, anywhere" },
-              { icon: <Smartphone className="size-8" />, title: "Multi-Platform", desc: "Desktop, tablet, and mobile ready" }
-            ].map((feature, i) => (
+            {features.map((feature, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
@@ -205,7 +229,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= HOW IT WORKS ================= */}
+      {/* How It Works Section */}
       <section className="py-20 bg-gradient-to-br from-red-50 to-orange-50">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -223,12 +247,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { icon: <UserPlus className="size-8" />, step: "1", title: "Create Account", desc: "Sign up in 2 minutes" },
-              { icon: <Users className="size-8" />, step: "2", title: "Choose Counselor", desc: "Browse expert profiles" },
-              { icon: <Calendar className="size-8" />, step: "3", title: "Book Session", desc: "Schedule at your time" },
-              { icon: <Heart className="size-8" />, step: "4", title: "Start Healing", desc: "Begin your journey" }
-            ].map((step, i) => (
+            {steps.map((step, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -253,7 +272,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= TESTIMONIALS ================= */}
+      {/* Testimonials Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -277,11 +296,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="grid md:grid-cols-3 gap-8"
           >
-            {[
-              { name: "Dr. Abdifatah Ibrahim", role: "Senior Counsellor", text: "This platform has revolutionized how I connect with students.", icon: "👨‍⚕️" },
-              { name: "Jamal Buthul", role: "Engineering Student", text: "The real-time chat feature was a game-changer for me.", icon: "👨‍🎓" },
-              { name: "Dr. Yussuf Gab", role: "Clinical Psychologist", text: "I've seen remarkable transformations in my students.", icon: "👨‍⚕️" }
-            ].map((item, i) => (
+            {testimonials.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
@@ -296,9 +311,7 @@ export default function Home() {
                     <h4 className="font-bold text-gray-900">{item.name}</h4>
                     <p className="text-sm text-red-600 font-medium">{item.role}</p>
                   </div>
-                  <div className="ml-auto text-yellow-400">
-                    {"★★★★★"}
-                  </div>
+                  <div className="ml-auto text-yellow-400">★★★★★</div>
                 </div>
               </motion.div>
             ))}
@@ -306,7 +319,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= ABOUT US ================= */}
+      {/* About Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-red-50">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -326,13 +339,7 @@ export default function Home() {
               support accessible to every student. We believe emotional well-being is the foundation of academic success.
             </p>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
-              {[
-                { icon: <Target className="size-4" />, label: "Mission-Driven" },
-                { icon: <Award className="size-4" />, label: "Award-Winning" },
-                { icon: <Globe className="size-4" />, label: "Global Community" },
-                { icon: <Heart className="size-4" />, label: "Student-First" },
-                { icon: <Star className="size-4" />, label: "5-Star Rated" }
-              ].map((badge, i) => (
+              {badges.map((badge, i) => (
                 <span key={i} className="inline-flex items-center gap-1.5 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">
                   {badge.icon}
                   {badge.label}
@@ -343,7 +350,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= FINAL CTA ================= */}
+      {/* CTA Section */}
       <section className="relative overflow-hidden py-20">
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-red-700 via-red-800 to-red-900" />
         <div className="absolute inset-0 -z-10 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20" />
