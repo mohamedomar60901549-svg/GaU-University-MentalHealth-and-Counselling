@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  Heart, 
+  Brain,
   User, 
   Mail, 
   Phone, 
@@ -42,7 +42,6 @@ function Register() {
     setError('');
     setLoading(true);
     
-    // Simulate API call
     setTimeout(() => {
       setLoading(false);
       setRegistered(true);
@@ -51,48 +50,115 @@ function Register() {
 
   if (registered) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-red-50">
+      <div style={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #faf5ff 100%)"
+      }}>
         <Navbar />
-        <div className="pt-32 pb-20">
-          <div className="max-w-md mx-auto px-4">
+        <div style={{ paddingTop: "128px", paddingBottom: "80px" }}>
+          <div style={{ maxWidth: "448px", margin: "0 auto", padding: "0 16px" }}>
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", duration: 0.6 }}
-              className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-8 text-center border border-gray-100"
+              style={{
+                background: "white",
+                borderRadius: "24px",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+                padding: "32px",
+                textAlign: "center",
+                border: "1px solid #f3f4f6"
+              }}
             >
               <motion.div 
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: "spring" }}
-                className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-green-500/25"
+                style={{
+                  width: "80px",
+                  height: "80px",
+                  background: "linear-gradient(135deg, #22c55e, #16a34a)",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "0 auto 16px",
+                  boxShadow: "0 8px 24px rgba(34,197,94,0.25)"
+                }}
               >
-                <CheckCircle className="text-white text-4xl" />
+                <CheckCircle style={{ color: "white", fontSize: "32px" }} />
               </motion.div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">Registration Successful!</h2>
-              <div className="w-16 h-1 bg-red-600 mx-auto rounded-full mb-4"></div>
-              <p className="text-gray-600 mb-4">
+              <h2 style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#111827",
+                marginBottom: "8px"
+              }}>Registration Successful!</h2>
+              <div style={{
+                width: "64px",
+                height: "4px",
+                background: "#2563eb",
+                margin: "0 auto 16px",
+                borderRadius: "4px"
+              }}></div>
+              <p style={{ color: "#6b7280", marginBottom: "16px" }}>
                 You're registered for:
               </p>
-              <span className="inline-block bg-red-50 text-red-700 px-4 py-2 rounded-full font-semibold text-sm mb-6">
+              <span style={{
+                display: "inline-block",
+                background: "#dbeafe",
+                color: "#1d4ed8",
+                padding: "8px 16px",
+                borderRadius: "9999px",
+                fontWeight: "600",
+                fontSize: "14px",
+                marginBottom: "24px"
+              }}>
                 {event}
               </span>
-              <div className="bg-gray-50 rounded-xl p-4 mb-6 text-left space-y-2">
-                <p className="text-sm text-gray-600">
-                  <span className="font-semibold">Name:</span> {formData.name}
+              <div style={{
+                background: "#f9fafb",
+                borderRadius: "12px",
+                padding: "16px",
+                marginBottom: "24px",
+                textAlign: "left"
+              }}>
+                <p style={{ fontSize: "14px", color: "#6b7280", marginBottom: "4px" }}>
+                  <span style={{ fontWeight: "600" }}>Name:</span> {formData.name}
                 </p>
-                <p className="text-sm text-gray-600">
-                  <span className="font-semibold">Email:</span> {formData.email}
+                <p style={{ fontSize: "14px", color: "#6b7280" }}>
+                  <span style={{ fontWeight: "600" }}>Email:</span> {formData.email}
                 </p>
               </div>
-              <p className="text-sm text-gray-500 mb-6">
+              <p style={{ fontSize: "14px", color: "#9ca3af", marginBottom: "24px" }}>
                 A confirmation email has been sent to {formData.email}
               </p>
               <button
                 onClick={() => navigate('/')}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-3 rounded-xl font-semibold hover:from-red-700 hover:to-red-800 transition-all shadow-lg shadow-red-600/25"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+                  color: "white",
+                  padding: "12px 32px",
+                  borderRadius: "12px",
+                  fontWeight: "600",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.2s",
+                  boxShadow: "0 4px 12px rgba(37,99,235,0.25)"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "scale(1.02)";
+                  e.target.style.boxShadow = "0 4px 16px rgba(37,99,235,0.35)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "scale(1)";
+                  e.target.style.boxShadow = "0 4px 12px rgba(37,99,235,0.25)";
+                }}
               >
-                <ArrowLeft className="size-4" />
+                <ArrowLeft size={16} />
                 Back to Home
               </button>
             </motion.div>
@@ -104,34 +170,67 @@ function Register() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-red-50">
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #faf5ff 100%)"
+    }}>
       <Navbar />
       
-      <div className="pt-32 pb-20">
-        <div className="max-w-md mx-auto px-4">
+      <div style={{ paddingTop: "128px", paddingBottom: "80px" }}>
+        <div style={{ maxWidth: "448px", margin: "0 auto", padding: "0 16px" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-8 border border-gray-100"
+            style={{
+              background: "white",
+              borderRadius: "24px",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+              padding: "32px",
+              border: "1px solid #f3f4f6"
+            }}
           >
             {/* Header */}
-            <div className="text-center mb-6">
+            <div style={{ textAlign: "center", marginBottom: "24px" }}>
               <motion.div
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.3 }}
-                className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-red-700 text-white shadow-lg shadow-red-600/25 mb-4"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "64px",
+                  height: "64px",
+                  borderRadius: "16px",
+                  background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+                  color: "white",
+                  boxShadow: "0 8px 24px rgba(37,99,235,0.25)",
+                  marginBottom: "16px"
+                }}
               >
-                <CalendarCheck className="size-8" />
+                <Brain size={32} />
               </motion.div>
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 style={{
+                fontSize: "28px",
+                fontWeight: "700",
+                color: "#111827"
+              }}>
                 Event Registration
               </h2>
-              <p className="text-gray-600 mt-1">
+              <p style={{ color: "#6b7280", marginTop: "4px" }}>
                 Register for:
               </p>
-              <span className="inline-block bg-red-50 text-red-700 px-4 py-1.5 rounded-full font-semibold text-sm mt-1">
+              <span style={{
+                display: "inline-block",
+                background: "#dbeafe",
+                color: "#1d4ed8",
+                padding: "6px 16px",
+                borderRadius: "9999px",
+                fontWeight: "600",
+                fontSize: "14px",
+                marginTop: "8px"
+              }}>
                 {event}
               </span>
             </div>
@@ -140,26 +239,68 @@ function Register() {
               <motion.div 
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="flex items-start gap-3 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-2xl mb-4"
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "12px",
+                  background: "#fef2f2",
+                  border: "1px solid #fecaca",
+                  color: "#dc2626",
+                  padding: "12px 16px",
+                  borderRadius: "16px",
+                  marginBottom: "16px"
+                }}
               >
-                <AlertCircle className="size-5 flex-shrink-0 mt-0.5" />
-                <span className="text-sm">{error}</span>
+                <AlertCircle size={20} style={{ flexShrink: 0, marginTop: "2px" }} />
+                <span style={{ fontSize: "14px" }}>{error}</span>
               </motion.div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit}>
               {/* Full Name */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{
+                  display: "block",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  color: "#374151",
+                  marginBottom: "6px"
+                }}>
                   Full Name
                 </label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+                <div style={{ position: "relative" }}>
+                  <User style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "16px",
+                    height: "16px",
+                    color: "#9ca3af"
+                  }} />
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px 12px 40px",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "12px",
+                      fontSize: "14px",
+                      color: "#111827",
+                      outline: "none",
+                      transition: "all 0.2s",
+                      boxSizing: "border-box"
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#2563eb";
+                      e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     placeholder="John Doe"
                     required
                   />
@@ -167,17 +308,49 @@ function Register() {
               </div>
 
               {/* Email */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{
+                  display: "block",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  color: "#374151",
+                  marginBottom: "6px"
+                }}>
                   Email Address
                 </label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+                <div style={{ position: "relative" }}>
+                  <Mail style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "16px",
+                    height: "16px",
+                    color: "#9ca3af"
+                  }} />
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px 12px 40px",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "12px",
+                      fontSize: "14px",
+                      color: "#111827",
+                      outline: "none",
+                      transition: "all 0.2s",
+                      boxSizing: "border-box"
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#2563eb";
+                      e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     placeholder="student@example.com"
                     required
                   />
@@ -185,17 +358,49 @@ function Register() {
               </div>
 
               {/* Phone */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{
+                  display: "block",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  color: "#374151",
+                  marginBottom: "6px"
+                }}>
                   Phone Number
                 </label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+                <div style={{ position: "relative" }}>
+                  <Phone style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "16px",
+                    height: "16px",
+                    color: "#9ca3af"
+                  }} />
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px 12px 40px",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "12px",
+                      fontSize: "14px",
+                      color: "#111827",
+                      outline: "none",
+                      transition: "all 0.2s",
+                      boxSizing: "border-box"
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#2563eb";
+                      e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     placeholder="+254 700 000 000"
                     required
                   />
@@ -203,17 +408,49 @@ function Register() {
               </div>
 
               {/* Student ID */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{
+                  display: "block",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  color: "#374151",
+                  marginBottom: "6px"
+                }}>
                   Student ID
                 </label>
-                <div className="relative">
-                  <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+                <div style={{ position: "relative" }}>
+                  <GraduationCap style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "16px",
+                    height: "16px",
+                    color: "#9ca3af"
+                  }} />
                   <input
                     type="text"
                     value={formData.studentId}
                     onChange={(e) => setFormData({...formData, studentId: e.target.value})}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px 12px 40px",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "12px",
+                      fontSize: "14px",
+                      color: "#111827",
+                      outline: "none",
+                      transition: "all 0.2s",
+                      boxSizing: "border-box"
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#2563eb";
+                      e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     placeholder="S12345"
                     required
                   />
@@ -221,33 +458,101 @@ function Register() {
               </div>
 
               {/* Department */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <div style={{ marginBottom: "16px" }}>
+                <label style={{
+                  display: "block",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  color: "#374151",
+                  marginBottom: "6px"
+                }}>
                   Department
                 </label>
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+                <div style={{ position: "relative" }}>
+                  <MapPin style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "16px",
+                    height: "16px",
+                    color: "#9ca3af"
+                  }} />
                   <input
                     type="text"
                     value={formData.department}
                     onChange={(e) => setFormData({...formData, department: e.target.value})}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px 12px 40px",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "12px",
+                      fontSize: "14px",
+                      color: "#111827",
+                      outline: "none",
+                      transition: "all 0.2s",
+                      boxSizing: "border-box"
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#2563eb";
+                      e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                     placeholder="Computer Science"
                   />
                 </div>
               </div>
 
               {/* Year of Study */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+              <div style={{ marginBottom: "20px" }}>
+                <label style={{
+                  display: "block",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  color: "#374151",
+                  marginBottom: "6px"
+                }}>
                   Year of Study
                 </label>
-                <div className="relative">
-                  <Clock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+                <div style={{ position: "relative" }}>
+                  <Clock style={{
+                    position: "absolute",
+                    left: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "16px",
+                    height: "16px",
+                    color: "#9ca3af",
+                    zIndex: 1
+                  }} />
                   <select
                     value={formData.yearOfStudy}
                     onChange={(e) => setFormData({...formData, yearOfStudy: e.target.value})}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition appearance-none"
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px 12px 40px",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "12px",
+                      fontSize: "14px",
+                      color: "#111827",
+                      background: "white",
+                      outline: "none",
+                      transition: "all 0.2s",
+                      appearance: "none",
+                      boxSizing: "border-box",
+                      cursor: "pointer"
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = "#2563eb";
+                      e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = "#e5e7eb";
+                      e.target.style.boxShadow = "none";
+                    }}
                   >
                     <option value="">Select year of study</option>
                     {[1, 2, 3, 4, 5, 6].map(year => (
@@ -261,29 +566,69 @@ function Register() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-lg shadow-red-600/25 hover:shadow-red-600/40 mt-2"
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                  padding: "14px",
+                  border: "none",
+                  borderRadius: "12px",
+                  fontSize: "14px",
+                  fontWeight: "600",
+                  color: "white",
+                  background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+                  cursor: loading ? "not-allowed" : "pointer",
+                  opacity: loading ? 0.7 : 1,
+                  transition: "all 0.2s",
+                  boxShadow: "0 4px 12px rgba(37,99,235,0.25)",
+                  marginTop: "8px"
+                }}
+                onMouseEnter={(e) => {
+                  if (!loading) {
+                    e.target.style.transform = "scale(1.02)";
+                    e.target.style.boxShadow = "0 4px 16px rgba(37,99,235,0.35)";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "scale(1)";
+                  e.target.style.boxShadow = "0 4px 12px rgba(37,99,235,0.25)";
+                }}
               >
                 {loading ? (
                   <>
-                    <Loader2 className="size-5 animate-spin" />
+                    <Loader2 size={20} style={{ animation: "spin 1s linear infinite" }} />
                     <span>Registering...</span>
                   </>
                 ) : (
                   <>
-                    <CalendarCheck className="size-4" />
+                    <CalendarCheck size={16} />
                     <span>Complete Registration</span>
                   </>
                 )}
               </button>
 
               {/* Back to Events */}
-              <div className="text-center pt-2">
+              <div style={{ textAlign: "center", paddingTop: "8px" }}>
                 <button
                   type="button"
                   onClick={() => navigate('/events')}
-                  className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-red-600 transition"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    fontSize: "14px",
+                    color: "#9ca3af",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "color 0.2s"
+                  }}
+                  onMouseEnter={(e) => e.target.style.color = "#2563eb"}
+                  onMouseLeave={(e) => e.target.style.color = "#9ca3af"}
                 >
-                  <ArrowLeft className="size-4" />
+                  <ArrowLeft size={16} />
                   Back to Events
                 </button>
               </div>
@@ -295,20 +640,28 @@ function Register() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-6 flex items-center justify-center gap-6 text-xs text-gray-400"
+            style={{
+              marginTop: "24px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "24px",
+              fontSize: "12px",
+              color: "#9ca3af"
+            }}
           >
-            <span className="flex items-center gap-1.5">
-              <Shield className="size-3 text-blue-500" />
+            <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <Shield size={12} style={{ color: "#3b82f6" }} />
               Secure Registration
             </span>
-            <span className="w-px h-4 bg-gray-300" />
-            <span className="flex items-center gap-1.5">
-              <CheckCircle className="size-3 text-green-500" />
+            <span style={{ width: "1px", height: "16px", background: "#d1d5db" }} />
+            <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <CheckCircle size={12} style={{ color: "#22c55e" }} />
               Free Event
             </span>
-            <span className="w-px h-4 bg-gray-300" />
-            <span className="flex items-center gap-1.5">
-              <Heart className="size-3 text-red-500" />
+            <span style={{ width: "1px", height: "16px", background: "#d1d5db" }} />
+            <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <Brain size={12} style={{ color: "#7c3aed" }} />
               Student Friendly
             </span>
           </motion.div>
