@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Heart, 
-  Home, 
+  Home as HomeIcon, 
   Info, 
   Phone, 
   HelpCircle, 
@@ -29,7 +29,8 @@ import {
   BookOpen
 } from 'lucide-react';
 
-export default function Home() {
+// Renamed the main component to avoid conflict with HomeIcon
+export default function HomePage() {
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -67,7 +68,7 @@ export default function Home() {
   ];
 
   const quickLinks = [
-    { to: "/", label: "Home", icon: <Home className="w-4 h-4" /> },
+    { to: "/", label: "Home", icon: <HomeIcon className="w-4 h-4" /> },
     { to: "/about", label: "About Us", icon: <Info className="w-4 h-4" /> },
     { to: "/contact", label: "Contact", icon: <Phone className="w-4 h-4" /> },
     { to: "/faq", label: "FAQs", icon: <HelpCircle className="w-4 h-4" /> },
