@@ -21,6 +21,86 @@ export default function HomePage() {
 
   return (
     <div>
+      {/* ================= STYLES ================= */}
+      <style>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          background: #f4f6f8;
+          color: #111827;
+        }
+        a {
+          text-decoration: none;
+        }
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 24px;
+        }
+        .btn-primary {
+          background: #2563eb;
+          color: white;
+          padding: 12px 32px;
+          border-radius: 9999px;
+          font-weight: 600;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .btn-primary:hover {
+          background: #1d4ed8;
+          transform: scale(1.02);
+        }
+        .btn-secondary {
+          background: transparent;
+          color: #2563eb;
+          padding: 12px 32px;
+          border-radius: 9999px;
+          font-weight: 600;
+          border: 2px solid #2563eb;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .btn-secondary:hover {
+          background: #2563eb;
+          color: white;
+        }
+        .card {
+          background: white;
+          border-radius: 16px;
+          padding: 24px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+          border: 1px solid #f3f4f6;
+          transition: all 0.2s;
+        }
+        .card:hover {
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+          transform: translateY(-4px);
+        }
+        .section-title {
+          font-size: 32px;
+          font-weight: 700;
+          color: #111827;
+          text-align: center;
+          margin-bottom: 8px;
+        }
+        .section-subtitle {
+          color: #6b7280;
+          text-align: center;
+          margin-bottom: 48px;
+        }
+      `}</style>
+
       {/* ================= NAVBAR ================= */}
       <nav style={{
         background: "white",
@@ -39,6 +119,7 @@ export default function HomePage() {
           alignItems: "center",
           height: "64px"
         }}>
+          {/* Logo */}
           <Link to="/" style={{
             display: "flex",
             alignItems: "center",
@@ -58,15 +139,16 @@ export default function HomePage() {
             }}>🧠</div>
             <span style={{
               fontSize: "20px",
-              fontWeight: "bold",
+              fontWeight: "700",
               color: "#111827"
             }}>
               Student<span style={{ color: "#2563eb" }}>Mental</span>
             </span>
           </Link>
 
+          {/* Desktop Navigation */}
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
-            <div style={{ display: "flex", gap: "24px" }}>
+            <div style={{ display: "flex", gap: "20px" }}>
               {quickLinks.map((link) => (
                 <Link
                   key={link.to}
@@ -85,7 +167,7 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
               <Link to="/login" style={{
                 fontSize: "14px",
                 color: "#6b7280",
@@ -148,7 +230,7 @@ export default function HomePage() {
             }}>🧠 Student Mental Health</span>
             <h1 style={{
               fontSize: "48px",
-              fontWeight: "bold",
+              fontWeight: "700",
               color: "#111827",
               marginTop: "24px",
               lineHeight: "1.2"
@@ -168,61 +250,16 @@ export default function HomePage() {
               counselling services, and a caring community dedicated to your well-being.
             </p>
             <div style={{ display: "flex", gap: "16px", marginTop: "32px" }}>
-              <Link to="/signup" style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                background: "#2563eb",
-                color: "white",
-                padding: "12px 32px",
-                borderRadius: "9999px",
-                fontWeight: "600",
-                textDecoration: "none",
-                boxShadow: "0 4px 12px rgba(37,99,235,0.3)",
-                transition: "all 0.2s"
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = "#1d4ed8";
-                e.target.style.boxShadow = "0 4px 16px rgba(37,99,235,0.4)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = "#2563eb";
-                e.target.style.boxShadow = "0 4px 12px rgba(37,99,235,0.3)";
-              }}>
+              <Link to="/signup" className="btn-primary">
                 Get Started →
               </Link>
-              <Link to="/about" style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                border: "2px solid #2563eb",
-                color: "#2563eb",
-                padding: "12px 32px",
-                borderRadius: "9999px",
-                fontWeight: "600",
-                textDecoration: "none",
-                transition: "all 0.2s"
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = "#2563eb";
-                e.target.style.color = "white";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = "transparent";
-                e.target.style.color = "#2563eb";
-              }}>
+              <Link to="/about" className="btn-secondary">
                 Learn More
               </Link>
             </div>
           </div>
 
-          <div style={{
-            background: "white",
-            borderRadius: "16px",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
-            padding: "32px",
-            border: "1px solid #f3f4f6"
-          }}>
+          <div className="card">
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
               <div style={{
                 background: "#dbeafe",
@@ -230,7 +267,7 @@ export default function HomePage() {
                 borderRadius: "8px",
                 fontSize: "20px"
               }}>👥</div>
-              <h2 style={{ fontSize: "20px", fontWeight: "bold", color: "#111827" }}>Quick Support</h2>
+              <h2 style={{ fontSize: "20px", fontWeight: "700", color: "#111827" }}>Quick Support</h2>
               <span style={{
                 marginLeft: "auto",
                 padding: "4px 12px",
@@ -241,7 +278,7 @@ export default function HomePage() {
                 fontWeight: "600"
               }}>● Online</span>
             </div>
-            <div style={{ space: "16px" }}>
+            <div>
               {[
                 { label: "Active Counsellors", value: "12" },
                 { label: "Today's Sessions", value: "34" },
@@ -255,7 +292,7 @@ export default function HomePage() {
                   borderBottom: "1px solid #f3f4f6"
                 }}>
                   <span style={{ color: "#6b7280" }}>{item.label}</span>
-                  <span style={{ fontWeight: "bold", color: "#111827" }}>{item.value}</span>
+                  <span style={{ fontWeight: "700", color: "#111827" }}>{item.value}</span>
                 </div>
               ))}
             </div>
@@ -284,7 +321,7 @@ export default function HomePage() {
               background: "#f9fafb",
               borderRadius: "12px"
             }}>
-              <div style={{ fontSize: "36px", fontWeight: "bold", color: "#2563eb" }}>{stat.value}</div>
+              <div style={{ fontSize: "36px", fontWeight: "700", color: "#2563eb" }}>{stat.value}</div>
               <p style={{ fontSize: "14px", color: "#6b7280", marginTop: "4px" }}>{stat.label}</p>
             </div>
           ))}
@@ -294,10 +331,8 @@ export default function HomePage() {
       {/* ================= SERVICES ================= */}
       <section style={{ padding: "64px 24px", background: "#f9fafb" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "48px" }}>
-            <h2 style={{ fontSize: "32px", fontWeight: "bold", color: "#111827" }}>Our Services</h2>
-            <p style={{ color: "#6b7280", marginTop: "8px" }}>Comprehensive mental health support for students</p>
-          </div>
+          <h2 className="section-title">Our Services</h2>
+          <p className="section-subtitle">Comprehensive mental health support for students</p>
 
           <div style={{
             display: "grid",
@@ -305,24 +340,9 @@ export default function HomePage() {
             gap: "24px"
           }}>
             {services.map((service) => (
-              <div key={service.title} style={{
-                background: "white",
-                padding: "24px",
-                borderRadius: "12px",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
-                border: "1px solid #f3f4f6",
-                transition: "all 0.2s"
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.boxShadow = "0 4px 12px rgba(0,0,0,0.08)";
-                e.target.style.transform = "translateY(-4px)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.boxShadow = "0 1px 3px rgba(0,0,0,0.05)";
-                e.target.style.transform = "translateY(0)";
-              }}>
+              <div key={service.title} className="card">
                 <div style={{ fontSize: "32px", marginBottom: "12px" }}>{service.icon}</div>
-                <h3 style={{ fontSize: "18px", fontWeight: "bold", color: "#111827" }}>{service.title}</h3>
+                <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#111827" }}>{service.title}</h3>
                 <p style={{ fontSize: "14px", color: "#6b7280", marginTop: "8px", lineHeight: "1.6" }}>{service.desc}</p>
               </div>
             ))}
@@ -333,10 +353,8 @@ export default function HomePage() {
       {/* ================= HOW IT WORKS ================= */}
       <section style={{ padding: "64px 24px", background: "white" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "48px" }}>
-            <h2 style={{ fontSize: "32px", fontWeight: "bold", color: "#111827" }}>How It Works</h2>
-            <p style={{ color: "#6b7280", marginTop: "8px" }}>Start your journey in 4 simple steps</p>
-          </div>
+          <h2 className="section-title">How It Works</h2>
+          <p className="section-subtitle">Start your journey in 4 simple steps</p>
 
           <div style={{
             display: "grid",
@@ -361,9 +379,9 @@ export default function HomePage() {
                   alignItems: "center",
                   justifyContent: "center",
                   fontSize: "24px",
-                  fontWeight: "bold"
+                  fontWeight: "700"
                 }}>{item.step}</div>
-                <h3 style={{ fontSize: "18px", fontWeight: "bold", color: "#111827" }}>{item.title}</h3>
+                <h3 style={{ fontSize: "18px", fontWeight: "700", color: "#111827" }}>{item.title}</h3>
                 <p style={{ fontSize: "14px", color: "#6b7280", marginTop: "4px" }}>{item.desc}</p>
               </div>
             ))}
@@ -374,10 +392,8 @@ export default function HomePage() {
       {/* ================= TESTIMONIALS ================= */}
       <section style={{ padding: "64px 24px", background: "#f9fafb" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "48px" }}>
-            <h2 style={{ fontSize: "32px", fontWeight: "bold", color: "#111827" }}>Testimonials</h2>
-            <p style={{ color: "#6b7280", marginTop: "8px" }}>What our community says</p>
-          </div>
+          <h2 className="section-title">Testimonials</h2>
+          <p className="section-subtitle">What our community says</p>
 
           <div style={{
             display: "grid",
@@ -389,18 +405,12 @@ export default function HomePage() {
               { name: "Fatuma Hassan", role: "Student", text: "I found a safe space to share my feelings. The counsellors are truly understanding.", icon: "👩‍🎓" },
               { name: "Dr. Ahmed Noor", role: "Counsellor", text: "Seeing students transform and grow is the most rewarding part of my work.", icon: "👨‍⚕️" }
             ].map((item) => (
-              <div key={item.name} style={{
-                background: "white",
-                padding: "24px",
-                borderRadius: "12px",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
-                border: "1px solid #f3f4f6"
-              }}>
+              <div key={item.name} className="card">
                 <div style={{ fontSize: "32px", marginBottom: "12px" }}>{item.icon}</div>
                 <p style={{ color: "#6b7280", lineHeight: "1.6", fontStyle: "italic" }}>"{item.text}"</p>
                 <hr style={{ margin: "16px 0", border: "none", borderTop: "1px solid #f3f4f6" }} />
                 <div>
-                  <h4 style={{ fontWeight: "bold", color: "#111827" }}>{item.name}</h4>
+                  <h4 style={{ fontWeight: "700", color: "#111827" }}>{item.name}</h4>
                   <p style={{ fontSize: "14px", color: "#2563eb" }}>{item.role}</p>
                 </div>
               </div>
@@ -419,7 +429,7 @@ export default function HomePage() {
           margin: "0 auto",
           textAlign: "center"
         }}>
-          <h2 style={{ fontSize: "32px", fontWeight: "bold", color: "white" }}>Your Mental Health Matters</h2>
+          <h2 style={{ fontSize: "32px", fontWeight: "700", color: "white" }}>Your Mental Health Matters</h2>
           <p style={{ color: "#bfdbfe", marginTop: "16px" }}>
             Join thousands of students finding hope, healing, and happiness
           </p>
@@ -435,7 +445,7 @@ export default function HomePage() {
               color: "#2563eb",
               padding: "12px 32px",
               borderRadius: "9999px",
-              fontWeight: "bold",
+              fontWeight: "700",
               textDecoration: "none",
               boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
               transition: "all 0.2s"
@@ -455,7 +465,7 @@ export default function HomePage() {
               color: "white",
               padding: "12px 32px",
               borderRadius: "9999px",
-              fontWeight: "bold",
+              fontWeight: "700",
               textDecoration: "none",
               transition: "all 0.2s"
             }}
@@ -487,7 +497,7 @@ export default function HomePage() {
           gap: "32px"
         }}>
           <div>
-            <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "12px" }}>🧠 StudentMental</h2>
+            <h2 style={{ fontSize: "20px", fontWeight: "700", marginBottom: "12px" }}>🧠 StudentMental</h2>
             <p style={{ color: "#9ca3af", fontSize: "14px", lineHeight: "1.6" }}>
               Empowering students with professional mental health support and counselling services.
             </p>
