@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { 
-  FaHeart, 
+  FaBrain,
   FaHome, 
   FaSignInAlt, 
   FaUserPlus, 
@@ -46,6 +46,9 @@ export default function Navbar() {
 
   const navLinks = [
     { to: "/", label: "Home", icon: <FaHome className="text-sm" /> },
+    { to: "/about", label: "About Us", icon: <FaUser className="text-sm" /> },
+    { to: "/contact", label: "Contact", icon: <FaUser className="text-sm" /> },
+    { to: "/faq", label: "FAQs", icon: <FaUser className="text-sm" /> },
   ];
 
   const getDashboardLink = () => {
@@ -85,22 +88,22 @@ export default function Navbar() {
             className="flex items-center gap-2.5 group"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-red-600/20 rounded-xl blur-md group-hover:blur-xl transition" />
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-red-700 text-white shadow-lg shadow-red-600/25 group-hover:scale-105 transition">
-                <FaHeart className="text-lg fill-white/20" />
+              <div className="absolute inset-0 bg-blue-600/20 rounded-xl blur-md group-hover:blur-xl transition" />
+              <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-600/25 group-hover:scale-105 transition">
+                <FaBrain className="text-lg" />
               </div>
             </div>
             <div className="hidden sm:block">
               <span className="text-xl font-bold text-gray-900">
-                Life<span className="text-red-600">Link</span>
+                Student<span className="text-blue-600">Mental</span>
               </span>
               <span className="ml-2 text-xs font-medium text-gray-400 border-l border-gray-200 pl-2">
-                Mental Health
+                Health
               </span>
             </div>
             <div className="sm:hidden">
               <span className="text-lg font-bold text-gray-900">
-                Life<span className="text-red-600">Link</span>
+                Student<span className="text-blue-600">Mental</span>
               </span>
             </div>
           </Link>
@@ -113,7 +116,7 @@ export default function Navbar() {
                 to={link.to}
                 className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
                   isActive(link.to)
-                    ? "text-red-600 bg-red-50"
+                    ? "text-blue-600 bg-blue-50"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                 }`}
               >
@@ -122,7 +125,7 @@ export default function Navbar() {
                 {isActive(link.to) && (
                   <motion.div
                     layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-red-600 rounded-full"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-blue-600 rounded-full"
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
@@ -135,7 +138,7 @@ export default function Navbar() {
                   to="/login"
                   className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
                     isActive("/login")
-                      ? "text-red-600 bg-red-50"
+                      ? "text-blue-600 bg-blue-50"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
@@ -144,14 +147,14 @@ export default function Navbar() {
                   {isActive("/login") && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-red-600 rounded-full"
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-blue-600 rounded-full"
                       transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     />
                   )}
                 </Link>
                 <Link
                   to="/signup"
-                  className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 transition shadow-lg shadow-red-600/25 hover:shadow-red-600/40"
+                  className="inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40"
                 >
                   <FaUserPlus className="text-sm" />
                   Signup
@@ -258,14 +261,14 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition ${
                   isActive(link.to)
-                    ? "text-red-600 bg-red-50"
+                    ? "text-blue-600 bg-blue-50"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                 }`}
               >
                 {link.icon}
                 {link.label}
                 {isActive(link.to) && (
-                  <span className="ml-auto text-red-600">●</span>
+                  <span className="ml-auto text-blue-600">●</span>
                 )}
               </Link>
             ))}
@@ -277,20 +280,20 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition ${
                     isActive("/login")
-                      ? "text-red-600 bg-red-50"
+                      ? "text-blue-600 bg-blue-50"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
                 >
                   <FaSignInAlt className="text-sm" />
                   Login
                   {isActive("/login") && (
-                    <span className="ml-auto text-red-600">●</span>
+                    <span className="ml-auto text-blue-600">●</span>
                   )}
                 </Link>
                 <Link
                   to="/signup"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-3 mx-4 px-4 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 transition"
+                  className="flex items-center justify-center gap-3 mx-4 px-4 py-3 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition"
                 >
                   <FaUserPlus className="text-sm" />
                   Signup
