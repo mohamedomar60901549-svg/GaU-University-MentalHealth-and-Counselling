@@ -74,6 +74,20 @@ export default function HomePage() {
     { to: "/terms", label: "Terms of Service", icon: <FileText className="w-4 h-4" /> }
   ];
 
+  const whyChooseUs = [
+    { icon: <Shield className="w-7 h-7" />, title: "Confidential", text: "Your privacy is our priority. All sessions are 100% confidential." },
+    { icon: <Users className="w-7 h-7" />, title: "Expert Counsellors", text: "Connect with licensed and experienced mental health professionals." },
+    { icon: <Clock className="w-7 h-7" />, title: "24/7 Availability", text: "Get support whenever you need it, day or night." },
+    { icon: <Award className="w-7 h-7" />, title: "Quality Care", text: "We maintain the highest standards of mental health care." }
+  ];
+
+  const howItWorks = [
+    { icon: <UserPlus className="w-8 h-8" />, step: "01", title: "Create Account", desc: "Sign up in 2 minutes" },
+    { icon: <Users className="w-8 h-8" />, step: "02", title: "Choose Counselor", desc: "Browse expert profiles" },
+    { icon: <Calendar className="w-8 h-8" />, step: "03", title: "Book Session", desc: "Schedule at your time" },
+    { icon: <Smile className="w-8 h-8" />, step: "04", title: "Start Healing", desc: "Begin your journey" }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* ================= NAVBAR ================= */}
@@ -278,19 +292,17 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {[
-              { icon: <Users className="w-8 h-8" />, value: "500+", label: "Students Helped" },
-              { icon: <UserPlus className="w-8 h-8" />, value: "50+", label: "Counsellors" },
-              { icon: <TrendingUp className="w-8 h-8" />, value: "98%", label: "Satisfaction Rate" },
-              { icon: <Clock className="w-8 h-8" />, value: "24/7", label: "Support Available" },
-            ].map((item, i) => (
+            {stats.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
                 className="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center text-blue-600 mb-5 mx-auto group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition">
-                  {item.icon}
+                  {i === 0 && <Users className="w-8 h-8" />}
+                  {i === 1 && <UserPlus className="w-8 h-8" />}
+                  {i === 2 && <TrendingUp className="w-8 h-8" />}
+                  {i === 3 && <Clock className="w-8 h-8" />}
                 </div>
                 <div className="text-4xl font-extrabold text-blue-600">{item.value}</div>
                 <p className="mt-2 text-gray-600 font-medium">{item.label}</p>
@@ -368,12 +380,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="grid md:grid-cols-4 gap-8"
           >
-            {[
-              { icon: <UserPlus className="w-8 h-8" />, step: "01", title: "Create Account", desc: "Sign up in 2 minutes" },
-              { icon: <Users className="w-8 h-8" />, step: "02", title: "Choose Counselor", desc: "Browse expert profiles" },
-              { icon: <Calendar className="w-8 h-8" />, step: "03", title: "Book Session", desc: "Schedule at your time" },
-              { icon: <Smile className="w-8 h-8" />, step: "04", title: "Start Healing", desc: "Begin your journey" },
-            ].map((item, i) => (
+            {howItWorks.map((item, i) => (
               <motion.div
                 key={i}
                 variants={fadeInUp}
@@ -395,7 +402,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ================= TESTIMONIALS SECTION ================= */}
+      {/* ================= WHY CHOOSE US ================= */}
       <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
@@ -405,6 +412,47 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <span className="inline-block bg-white text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">
+              WHY CHOOSE US
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900 mt-4">
+              Your Mental Health <span className="text-blue-600">Matters to Us</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={staggerChildren}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            {whyChooseUs.map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="group bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
+              >
+                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-600/25 group-hover:scale-110 transition mb-4">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
+                <p className="mt-3 text-gray-600 leading-relaxed">{item.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= TESTIMONIALS SECTION ================= */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold">
               TESTIMONIALS
             </span>
             <h2 className="text-4xl font-bold text-gray-900 mt-4">
@@ -423,7 +471,7 @@ export default function HomePage() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100"
+                className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100"
               >
                 <Quote className="w-8 h-8 text-blue-400 mb-4" />
                 <p className="text-gray-600 leading-relaxed italic">"{item.text}"</p>
@@ -436,52 +484,6 @@ export default function HomePage() {
                   </div>
                   <div className="ml-auto text-yellow-400">★★★★★</div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ================= WHY CHOOSE US ================= */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold">
-              WHY CHOOSE US
-            </span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-4">
-              Your Mental Health <span className="text-blue-600">Matters to Us</span>
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={staggerChildren}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {[
-              { icon: <Shield className="w-7 h-7" />, title: "Confidential", text: "Your privacy is our priority. All sessions are 100% confidential." },
-              { icon: <Users className="w-7 h-7" />, title: "Expert Counsellors", text: "Connect with licensed and experienced mental health professionals." },
-              { icon: <Clock className="w-7 h-7" />, title: "24/7 Availability", text: "Get support whenever you need it, day or night." },
-              { icon: <Award className="w-7 h-7" />, title: "Quality Care", text: "We maintain the highest standards of mental health care." },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                variants={fadeInUp}
-                className="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
-              >
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-600/25 group-hover:scale-110 transition mb-4">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
-                <p className="mt-3 text-gray-600 leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
           </motion.div>
