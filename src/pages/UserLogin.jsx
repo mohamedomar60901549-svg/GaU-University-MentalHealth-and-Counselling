@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  Heart, 
+  Brain,
   User, 
   Lock, 
   LogIn, 
@@ -46,7 +46,6 @@ const UserLogin = () => {
         password: formData.password,
       });
 
-      // Save tokens and user data
       localStorage.setItem('access_token', response.access_token);
       localStorage.setItem('refresh_token', response.refresh_token);
       localStorage.setItem('user', JSON.stringify(response.user));
@@ -55,7 +54,6 @@ const UserLogin = () => {
         localStorage.setItem('remember_me', 'true');
       }
 
-      // Redirect based on role
       const userRole = response.user.role;
       if (userRole === 'admin') {
         navigate('/admin/dashboard');
@@ -72,7 +70,7 @@ const UserLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-red-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 py-12 px-4 sm:px-6 lg:px-8">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -85,19 +83,19 @@ const UserLogin = () => {
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-red-700 text-white shadow-lg shadow-red-600/25 mb-4"
+            className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-600/25 mb-4"
           >
-            <Heart className="size-8 fill-white/20" />
+            <Brain className="size-8" />
           </motion.div>
           <h2 className="text-3xl font-bold text-gray-900">
             Welcome back
           </h2>
           <p className="mt-2 text-gray-600">
-            Sign in to continue saving lives
+            Sign in to continue your wellness journey
           </p>
           <p className="mt-1 text-sm text-gray-500">
             Don't have an account?{' '}
-            <Link to="/signup" className="font-semibold text-red-600 hover:text-red-700 transition">
+            <Link to="/signup" className="font-semibold text-blue-600 hover:text-blue-700 transition">
               Create one now
             </Link>
           </p>
@@ -134,7 +132,7 @@ const UserLogin = () => {
                   name="username"
                   type="text"
                   required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                   placeholder="Enter your username or email"
                   value={formData.username}
                   onChange={handleChange}
@@ -154,7 +152,7 @@ const UserLogin = () => {
                   name="password"
                   type={showPassword ? 'text' : 'password'}
                   required
-                  className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
+                  className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                   placeholder="Enter your password"
                   value={formData.password}
                   onChange={handleChange}
@@ -176,13 +174,13 @@ const UserLogin = () => {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 rounded border-gray-300 text-red-600 focus:ring-red-500 cursor-pointer"
+                  className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
                 />
                 <span className="text-sm text-gray-600">Remember me</span>
               </label>
               <Link 
                 to="/forgot-password" 
-                className="text-sm font-medium text-red-600 hover:text-red-700 transition"
+                className="text-sm font-medium text-blue-600 hover:text-blue-700 transition"
               >
                 Forgot password?
               </Link>
@@ -192,7 +190,7 @@ const UserLogin = () => {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex items-center justify-center gap-2 py-3.5 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-lg shadow-red-600/25 hover:shadow-red-600/40"
+              className="group relative w-full flex items-center justify-center gap-2 py-3.5 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40"
             >
               {loading ? (
                 <>
@@ -250,7 +248,7 @@ const UserLogin = () => {
             <div className="text-center pt-2">
               <Link 
                 to="/" 
-                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-red-600 transition"
+                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition"
               >
                 <ArrowLeft className="size-4" />
                 Back to Home
@@ -277,8 +275,8 @@ const UserLogin = () => {
           </span>
           <span className="w-px h-4 bg-gray-300" />
           <span className="flex items-center gap-1.5">
-            <Heart className="size-3 text-red-500" />
-            Trusted Platform
+            <Brain className="size-3 text-purple-500" />
+            Mental Wellness
           </span>
         </motion.div>
       </motion.div>
