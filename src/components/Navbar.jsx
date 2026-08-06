@@ -129,13 +129,12 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div
-            style={{
-              display: "none",
-              alignItems: "center",
-              gap: "4px"
-            }}
-            className="desktop-nav"
+          <div style={{
+            display: "none",
+            alignItems: "center",
+            gap: "4px"
+          }}
+          className="desktop-nav"
           >
             {navLinks.map((link) => (
               <Link
@@ -218,7 +217,7 @@ export default function Navbar() {
                     e.target.style.boxShadow = "none";
                   }}
                 >
-                  Get Started
+                  Signup
                 </Link>
               </div>
             )}
@@ -252,7 +251,7 @@ export default function Navbar() {
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                     {getRoleIcon()}
-                    <span style={{ display: "none" }}>{getRoleLabel()}</span>
+                    <span style={{ display: "none", "@media (min-width: 768px)": { display: "inline" } }}>{getRoleLabel()}</span>
                   </span>
                   <FaChevronDown style={{
                     fontSize: "10px",
@@ -625,7 +624,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Add CSS for desktop navigation */}
       <style>{`
         @media (min-width: 1024px) {
           .desktop-nav {
