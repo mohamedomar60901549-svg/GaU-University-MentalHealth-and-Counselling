@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronDown, FaQuestion } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaChevronDown, FaQuestion, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -43,81 +43,180 @@ function FAQ() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div style={{
+      minHeight: "100vh",
+      background: "#f4f6f8"
+    }}>
       <Navbar />
       
-      <div className="pt-32 pb-20">
-        <div className="max-w-4xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
-          >
-            <FaQuestion className="text-6xl text-primary-600 mx-auto mb-4" />
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">
+      <div style={{
+        paddingTop: "100px",
+        paddingBottom: "80px"
+      }}>
+        <div style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          padding: "0 20px"
+        }}>
+          {/* Header */}
+          <div style={{
+            textAlign: "center",
+            marginBottom: "48px"
+          }}>
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "72px",
+              height: "72px",
+              margin: "0 auto 16px",
+              background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+              borderRadius: "50%",
+              color: "white",
+              fontSize: "32px"
+            }}>
+              <FaQuestion />
+            </div>
+            <h1 style={{
+              fontSize: "36px",
+              fontWeight: "700",
+              color: "#111827",
+              marginBottom: "8px"
+            }}>
               Frequently Asked Questions
             </h1>
-            <p className="text-xl text-gray-600">
+            <p style={{
+              fontSize: "18px",
+              color: "#6b7280"
+            }}>
               Find answers to common questions about our counselling services
             </p>
-          </motion.div>
+          </div>
 
-          <div className="space-y-4">
+          {/* FAQ List */}
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px"
+          }}>
             {faqs.map((faq, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-md overflow-hidden"
+                style={{
+                  background: "white",
+                  borderRadius: "12px",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+                  border: "1px solid #f3f4f6",
+                  overflow: "hidden",
+                  transition: "all 0.3s ease"
+                }}
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50"
+                  style={{
+                    width: "100%",
+                    padding: "16px 24px",
+                    background: "white",
+                    border: "none",
+                    cursor: "pointer",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    transition: "background 0.2s"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.background = "#f9fafb";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.background = "white";
+                  }}
                 >
-                  <span className="font-semibold text-gray-800">{faq.question}</span>
-                  <FaChevronDown
-                    className={`text-gray-500 transition-transform ${
-                      openIndex === index ? 'transform rotate-180' : ''
-                    }`}
-                  />
+                  <span style={{
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    color: "#111827",
+                    textAlign: "left"
+                  }}>
+                    {faq.question}
+                  </span>
+                  <FaChevronDown style={{
+                    fontSize: "14px",
+                    color: "#6b7280",
+                    transition: "transform 0.3s ease",
+                    transform: openIndex === index ? "rotate(180deg)" : "rotate(0deg)",
+                    flexShrink: 0,
+                    marginLeft: "16px"
+                  }} />
                 </button>
                 
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="px-6 pb-4"
-                    >
-                      <p className="text-gray-600">{faq.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                {openIndex === index && (
+                  <div style={{
+                    padding: "0 24px 20px 24px",
+                    borderTop: "1px solid #f3f4f6"
+                  }}>
+                    <p style={{
+                      color: "#6b7280",
+                      lineHeight: "1.7",
+                      fontSize: "15px",
+                      marginTop: "16px"
+                    }}>
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-12 bg-primary-50 rounded-xl p-6 text-center"
-          >
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          {/* Contact Section */}
+          <div style={{
+            marginTop: "48px",
+            background: "linear-gradient(135deg, #eff6ff, #faf5ff)",
+            borderRadius: "16px",
+            padding: "32px",
+            textAlign: "center",
+            border: "1px solid #e5e7eb"
+          }}>
+            <h3 style={{
+              fontSize: "20px",
+              fontWeight: "600",
+              color: "#111827",
+              marginBottom: "8px"
+            }}>
               Still have questions?
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p style={{
+              color: "#6b7280",
+              marginBottom: "16px"
+            }}>
               Contact our support team and we'll be happy to help
             </p>
-            <button
-              onClick={() => window.location.href = '/contact'}
-              className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700"
+            <Link
+              to="/contact"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "10px 32px",
+                background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+                color: "white",
+                borderRadius: "9999px",
+                fontWeight: "600",
+                textDecoration: "none",
+                transition: "all 0.2s"
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "scale(1.02)";
+                e.target.style.boxShadow = "0 4px 12px rgba(37,99,235,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "none";
+              }}
             >
-              Contact Us
-            </button>
-          </motion.div>
+              Contact Us →
+            </Link>
+          </div>
         </div>
       </div>
 
