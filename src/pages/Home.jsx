@@ -24,7 +24,8 @@ import {
   Award,
   Target,
   Star,
-  Globe
+  Globe,
+  UserPlus
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -77,7 +78,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* ================= NAVBAR ================= */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
             <Link to="/" className="flex items-center gap-2.5">
               <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-600/25">
@@ -121,7 +122,6 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Mobile menu button */}
             <button className="lg:hidden p-2.5 rounded-lg hover:bg-gray-50 transition">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -138,7 +138,7 @@ export default function HomePage() {
           <div className="absolute bottom-10 right-5 w-80 h-80 bg-purple-200/20 rounded-full blur-3xl" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
+        <div className="max-w-7xl mx-auto px-6 pb-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -254,9 +254,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ================= SERVICES SECTION ================= */}
+      {/* ================= STATISTICS ================= */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -264,6 +264,52 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold">
+              STATISTICS
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900 mt-4">
+              Making a <span className="text-blue-600">Difference</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={staggerChildren}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            {[
+              { icon: <Users className="w-8 h-8" />, value: "500+", label: "Students Helped" },
+              { icon: <UserPlus className="w-8 h-8" />, value: "50+", label: "Counsellors" },
+              { icon: <TrendingUp className="w-8 h-8" />, value: "98%", label: "Satisfaction Rate" },
+              { icon: <Clock className="w-8 h-8" />, value: "24/7", label: "Support Available" },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center text-blue-600 mb-5 mx-auto group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition">
+                  {item.icon}
+                </div>
+                <div className="text-4xl font-extrabold text-blue-600">{item.value}</div>
+                <p className="mt-2 text-gray-600 font-medium">{item.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= SERVICES SECTION ================= */}
+      <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block bg-white text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">
               OUR SERVICES
             </span>
             <h2 className="text-4xl font-bold text-gray-900 mt-4">
@@ -285,7 +331,7 @@ export default function HomePage() {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
+                className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center text-blue-600 mb-5 group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition">
                   {service.icon}
@@ -298,16 +344,67 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ================= TESTIMONIALS SECTION ================= */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      {/* ================= HOW IT WORKS ================= */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block bg-green-100 text-green-700 px-4 py-1.5 rounded-full text-sm font-semibold">
+            <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold">
+              HOW IT WORKS
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900 mt-4">
+              Start Your <span className="text-blue-600">Journey</span> in 4 Steps
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={staggerChildren}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-4 gap-8"
+          >
+            {[
+              { icon: <UserPlus className="w-8 h-8" />, step: "01", title: "Create Account", desc: "Sign up in 2 minutes" },
+              { icon: <Users className="w-8 h-8" />, step: "02", title: "Choose Counselor", desc: "Browse expert profiles" },
+              { icon: <Calendar className="w-8 h-8" />, step: "03", title: "Book Session", desc: "Schedule at your time" },
+              { icon: <Smile className="w-8 h-8" />, step: "04", title: "Start Healing", desc: "Begin your journey" },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="text-center group"
+              >
+                <div className="relative">
+                  <div className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-600/25 group-hover:scale-110 transition-transform mb-4">
+                    {item.icon}
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center text-blue-600 font-bold text-sm shadow-md">
+                    {item.step}
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
+                <p className="mt-1 text-gray-600">{item.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= TESTIMONIALS SECTION ================= */}
+      <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block bg-white text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">
               TESTIMONIALS
             </span>
             <h2 className="text-4xl font-bold text-gray-900 mt-4">
@@ -345,19 +442,68 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ================= WHY CHOOSE US ================= */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-sm font-semibold">
+              WHY CHOOSE US
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900 mt-4">
+              Your Mental Health <span className="text-blue-600">Matters to Us</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={staggerChildren}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            {[
+              { icon: <Shield className="w-7 h-7" />, title: "Confidential", text: "Your privacy is our priority. All sessions are 100% confidential." },
+              { icon: <Users className="w-7 h-7" />, title: "Expert Counsellors", text: "Connect with licensed and experienced mental health professionals." },
+              { icon: <Clock className="w-7 h-7" />, title: "24/7 Availability", text: "Get support whenever you need it, day or night." },
+              { icon: <Award className="w-7 h-7" />, title: "Quality Care", text: "We maintain the highest standards of mental health care." },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                variants={fadeInUp}
+                className="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 text-center shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 border border-gray-100"
+              >
+                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-600/25 group-hover:scale-110 transition mb-4">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
+                <p className="mt-3 text-gray-600 leading-relaxed">{item.text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ================= CTA SECTION ================= */}
-      <section className="relative overflow-hidden py-20">
+      <section className="relative overflow-hidden py-24">
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-700 via-purple-700 to-blue-800" />
         <div className="absolute inset-0 -z-10 opacity-10" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }} />
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative">
+        <div className="max-w-4xl mx-auto px-6 text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
+            <div className="mx-auto mb-6 inline-flex w-16 h-16 items-center justify-center rounded-2xl bg-white/10 backdrop-blur text-white">
+              <Brain className="w-8 h-8" />
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white">
               Your Mental Health Matters
             </h2>
@@ -399,9 +545,8 @@ export default function HomePage() {
 
       {/* ================= FOOTER ================= */}
       <footer className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid md:grid-cols-4 gap-12">
-            {/* Brand Column */}
             <div>
               <Link to="/" className="flex items-center gap-2.5 mb-4">
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white">
@@ -431,7 +576,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Quick Links */}
             <div>
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
                 Quick Links
@@ -451,7 +595,6 @@ export default function HomePage() {
               </ul>
             </div>
 
-            {/* Our Services */}
             <div>
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
                 Our Services
@@ -467,7 +610,6 @@ export default function HomePage() {
               </ul>
             </div>
 
-            {/* Contact Info */}
             <div>
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
                 Get In Touch
