@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-  Heart, 
+  Brain,
   User, 
   Mail, 
   Lock, 
@@ -46,7 +46,6 @@ const UserSignup = () => {
       [e.target.name]: value,
     });
 
-    // Check password strength
     if (e.target.name === 'password') {
       let strength = 0;
       if (value.length >= 8) strength++;
@@ -61,7 +60,6 @@ const UserSignup = () => {
     e.preventDefault();
     setError('');
 
-    // Validation
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       return;
@@ -99,11 +97,11 @@ const UserSignup = () => {
   };
 
   const getPasswordStrengthColor = () => {
-    if (passwordStrength === 0) return 'bg-gray-200';
-    if (passwordStrength === 1) return 'bg-red-500';
-    if (passwordStrength === 2) return 'bg-orange-500';
-    if (passwordStrength === 3) return 'bg-yellow-500';
-    return 'bg-green-500';
+    if (passwordStrength === 0) return '#e5e7eb';
+    if (passwordStrength === 1) return '#ef4444';
+    if (passwordStrength === 2) return '#f59e0b';
+    if (passwordStrength === 3) return '#eab308';
+    return '#22c55e';
   };
 
   const getPasswordStrengthText = () => {
@@ -115,32 +113,70 @@ const UserSignup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-red-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div style={{
+      minHeight: "100vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      background: "linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #faf5ff 100%)",
+      padding: "48px 16px"
+    }}>
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-md w-full"
+        style={{
+          maxWidth: "448px",
+          width: "100%"
+        }}
       >
         {/* Header */}
-        <div className="text-center mb-8">
+        <div style={{ textAlign: "center", marginBottom: "32px" }}>
           <motion.div
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-red-600 to-red-700 text-white shadow-lg shadow-red-600/25 mb-4"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "64px",
+              height: "64px",
+              borderRadius: "16px",
+              background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+              color: "white",
+              boxShadow: "0 8px 24px rgba(37,99,235,0.25)",
+              marginBottom: "16px"
+            }}
           >
-            <Heart className="size-8 fill-white/20" />
+            <Brain size={32} />
           </motion.div>
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 style={{
+            fontSize: "30px",
+            fontWeight: "700",
+            color: "#111827",
+            marginBottom: "8px"
+          }}>
             Create your account
           </h2>
-          <p className="mt-2 text-gray-600">
-            Join LifeLink and help save lives
+          <p style={{
+            color: "#6b7280",
+            marginBottom: "4px"
+          }}>
+            Join Student Mental Health community
           </p>
-          <p className="mt-1 text-sm text-gray-500">
+          <p style={{
+            fontSize: "14px",
+            color: "#9ca3af"
+          }}>
             Already have an account?{' '}
-            <Link to="/login" className="font-semibold text-red-600 hover:text-red-700 transition">
+            <Link to="/login" style={{
+              fontWeight: "600",
+              color: "#2563eb",
+              textDecoration: "none"
+            }}
+            onMouseEnter={(e) => e.target.style.color = "#1d4ed8"}
+            onMouseLeave={(e) => e.target.style.color = "#2563eb"}>
               Sign in
             </Link>
           </p>
@@ -151,241 +187,588 @@ const UserSignup = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-8 border border-gray-100"
+          style={{
+            background: "white",
+            borderRadius: "24px",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+            padding: "32px",
+            border: "1px solid #f3f4f6"
+          }}
         >
-          <form className="space-y-5" onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             {error && (
               <motion.div 
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="flex items-start gap-3 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-2xl"
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "12px",
+                  background: "#fef2f2",
+                  border: "1px solid #fecaca",
+                  color: "#dc2626",
+                  padding: "12px 16px",
+                  borderRadius: "16px",
+                  marginBottom: "16px"
+                }}
               >
-                <AlertCircle className="size-5 flex-shrink-0 mt-0.5" />
-                <span className="text-sm">{error}</span>
+                <AlertCircle size={20} style={{ flexShrink: 0, marginTop: "2px" }} />
+                <span style={{ fontSize: "14px" }}>{error}</span>
               </motion.div>
             )}
 
             {/* Username */}
-            <div className="relative">
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <div style={{ marginBottom: "16px" }}>
+              <label style={{
+                display: "block",
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "#374151",
+                marginBottom: "6px"
+              }}>
                 Username
               </label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+              <div style={{ position: "relative" }}>
+                <User style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "16px",
+                  height: "16px",
+                  color: "#9ca3af"
+                }} />
                 <input
-                  id="username"
                   name="username"
                   type="text"
-                  required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
-                  placeholder="Choose a username"
                   value={formData.username}
                   onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px 16px 12px 40px",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    fontSize: "14px",
+                    color: "#111827",
+                    outline: "none",
+                    transition: "all 0.2s",
+                    boxSizing: "border-box",
+                    background: "white"
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#2563eb";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e5e7eb";
+                    e.target.style.boxShadow = "none";
+                  }}
+                  placeholder="Choose a username"
+                  required
                 />
               </div>
             </div>
 
             {/* Full Name */}
-            <div className="relative">
-              <label htmlFor="full_name" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <div style={{ marginBottom: "16px" }}>
+              <label style={{
+                display: "block",
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "#374151",
+                marginBottom: "6px"
+              }}>
                 Full Name
               </label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+              <div style={{ position: "relative" }}>
+                <User style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "16px",
+                  height: "16px",
+                  color: "#9ca3af"
+                }} />
                 <input
-                  id="full_name"
                   name="full_name"
                   type="text"
-                  required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
-                  placeholder="Enter your full name"
                   value={formData.full_name}
                   onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px 16px 12px 40px",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    fontSize: "14px",
+                    color: "#111827",
+                    outline: "none",
+                    transition: "all 0.2s",
+                    boxSizing: "border-box",
+                    background: "white"
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#2563eb";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e5e7eb";
+                    e.target.style.boxShadow = "none";
+                  }}
+                  placeholder="Enter your full name"
+                  required
                 />
               </div>
             </div>
 
             {/* Email */}
-            <div className="relative">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <div style={{ marginBottom: "16px" }}>
+              <label style={{
+                display: "block",
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "#374151",
+                marginBottom: "6px"
+              }}>
                 Email Address
               </label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+              <div style={{ position: "relative" }}>
+                <Mail style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "16px",
+                  height: "16px",
+                  color: "#9ca3af"
+                }} />
                 <input
-                  id="email"
                   name="email"
                   type="email"
-                  required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
-                  placeholder="you@example.com"
                   value={formData.email}
                   onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px 16px 12px 40px",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    fontSize: "14px",
+                    color: "#111827",
+                    outline: "none",
+                    transition: "all 0.2s",
+                    boxSizing: "border-box",
+                    background: "white"
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#2563eb";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e5e7eb";
+                    e.target.style.boxShadow = "none";
+                  }}
+                  placeholder="you@example.com"
+                  required
                 />
               </div>
             </div>
 
             {/* Student ID */}
-            <div className="relative">
-              <label htmlFor="student_id" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <div style={{ marginBottom: "16px" }}>
+              <label style={{
+                display: "block",
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "#374151",
+                marginBottom: "6px"
+              }}>
                 Student ID
               </label>
-              <div className="relative">
-                <IdCard className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+              <div style={{ position: "relative" }}>
+                <IdCard style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "16px",
+                  height: "16px",
+                  color: "#9ca3af"
+                }} />
                 <input
-                  id="student_id"
                   name="student_id"
                   type="text"
-                  required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
-                  placeholder="e.g., STU12345"
                   value={formData.student_id}
                   onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px 16px 12px 40px",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    fontSize: "14px",
+                    color: "#111827",
+                    outline: "none",
+                    transition: "all 0.2s",
+                    boxSizing: "border-box",
+                    background: "white"
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#2563eb";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e5e7eb";
+                    e.target.style.boxShadow = "none";
+                  }}
+                  placeholder="e.g., STU12345"
+                  required
                 />
               </div>
             </div>
 
             {/* Department */}
-            <div className="relative">
-              <label htmlFor="department" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <div style={{ marginBottom: "16px" }}>
+              <label style={{
+                display: "block",
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "#374151",
+                marginBottom: "6px"
+              }}>
                 Department
               </label>
-              <div className="relative">
-                <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+              <div style={{ position: "relative" }}>
+                <Building2 style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "16px",
+                  height: "16px",
+                  color: "#9ca3af"
+                }} />
                 <input
-                  id="department"
                   name="department"
                   type="text"
-                  required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
-                  placeholder="e.g., Computer Science"
                   value={formData.department}
                   onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px 16px 12px 40px",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    fontSize: "14px",
+                    color: "#111827",
+                    outline: "none",
+                    transition: "all 0.2s",
+                    boxSizing: "border-box",
+                    background: "white"
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#2563eb";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e5e7eb";
+                    e.target.style.boxShadow = "none";
+                  }}
+                  placeholder="e.g., Computer Science"
+                  required
                 />
               </div>
             </div>
 
             {/* Year of Study */}
-            <div className="relative">
-              <label htmlFor="year_of_study" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <div style={{ marginBottom: "16px" }}>
+              <label style={{
+                display: "block",
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "#374151",
+                marginBottom: "6px"
+              }}>
                 Year of Study
               </label>
-              <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+              <div style={{ position: "relative" }}>
+                <Calendar style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "16px",
+                  height: "16px",
+                  color: "#9ca3af",
+                  zIndex: 1,
+                  pointerEvents: "none"
+                }} />
                 <select
-                  id="year_of_study"
                   name="year_of_study"
-                  required
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition appearance-none"
                   value={formData.year_of_study}
                   onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px 16px 12px 40px",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    fontSize: "14px",
+                    color: "#111827",
+                    background: "white",
+                    outline: "none",
+                    transition: "all 0.2s",
+                    appearance: "none",
+                    boxSizing: "border-box",
+                    cursor: "pointer"
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#2563eb";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e5e7eb";
+                    e.target.style.boxShadow = "none";
+                  }}
                 >
                   <option value="">Select year of study</option>
                   {[1, 2, 3, 4, 5, 6].map(year => (
                     <option key={year} value={year}>Year {year}</option>
                   ))}
                 </select>
+                <div style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  color: "#9ca3af",
+                  pointerEvents: "none",
+                  fontSize: "12px"
+                }}>▼</div>
               </div>
             </div>
 
             {/* Password */}
-            <div className="relative">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <div style={{ marginBottom: "16px" }}>
+              <label style={{
+                display: "block",
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "#374151",
+                marginBottom: "6px"
+              }}>
                 Password
               </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+              <div style={{ position: "relative" }}>
+                <Lock style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "16px",
+                  height: "16px",
+                  color: "#9ca3af"
+                }} />
                 <input
-                  id="password"
                   name="password"
                   type={showPassword ? 'text' : 'password'}
-                  required
-                  className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition"
-                  placeholder="Min 8 characters"
                   value={formData.password}
                   onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px 48px 12px 40px",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    fontSize: "14px",
+                    color: "#111827",
+                    outline: "none",
+                    transition: "all 0.2s",
+                    boxSizing: "border-box",
+                    background: "white"
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#2563eb";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e5e7eb";
+                    e.target.style.boxShadow = "none";
+                  }}
+                  placeholder="Min 8 characters"
+                  required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition"
+                  style={{
+                    position: "absolute",
+                    right: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "transparent",
+                    border: "none",
+                    color: "#9ca3af",
+                    cursor: "pointer",
+                    padding: "4px"
+                  }}
                 >
-                  {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
               {formData.password && (
-                <div className="mt-2 space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                <div style={{ marginTop: "8px" }}>
+                  <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginBottom: "4px"
+                  }}>
+                    <div style={{
+                      flex: 1,
+                      height: "6px",
+                      background: "#e5e7eb",
+                      borderRadius: "9999px",
+                      overflow: "hidden"
+                    }}>
                       <motion.div 
                         initial={{ width: 0 }}
                         animate={{ width: `${(passwordStrength / 4) * 100}%` }}
-                        className={`h-full ${getPasswordStrengthColor()} rounded-full transition-all`}
+                        style={{
+                          height: "100%",
+                          background: getPasswordStrengthColor(),
+                          borderRadius: "9999px",
+                          transition: "all 0.3s"
+                        }}
                       />
                     </div>
-                    <span className="text-xs text-gray-500 ml-2 min-w-[40px]">
+                    <span style={{
+                      fontSize: "12px",
+                      color: "#6b7280",
+                      marginLeft: "8px",
+                      minWidth: "40px"
+                    }}>
                       {getPasswordStrengthText()}
                     </span>
                   </div>
-                  <ul className="grid grid-cols-2 gap-1 text-xs text-gray-500">
-                    <li className={`flex items-center gap-1 ${formData.password.length >= 8 ? 'text-green-600' : ''}`}>
-                      <CheckCircle className={`size-3 ${formData.password.length >= 8 ? 'text-green-500' : 'text-gray-300'}`} />
+                  <div style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "4px"
+                  }}>
+                    <span style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "4px",
+                      fontSize: "12px",
+                      color: formData.password.length >= 8 ? "#22c55e" : "#6b7280"
+                    }}>
+                      <CheckCircle size={12} style={{ color: formData.password.length >= 8 ? "#22c55e" : "#d1d5db" }} />
                       Min 8 chars
-                    </li>
-                    <li className={`flex items-center gap-1 ${/[a-z]/.test(formData.password) && /[A-Z]/.test(formData.password) ? 'text-green-600' : ''}`}>
-                      <CheckCircle className={`size-3 ${/[a-z]/.test(formData.password) && /[A-Z]/.test(formData.password) ? 'text-green-500' : 'text-gray-300'}`} />
+                    </span>
+                    <span style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "4px",
+                      fontSize: "12px",
+                      color: /[a-z]/.test(formData.password) && /[A-Z]/.test(formData.password) ? "#22c55e" : "#6b7280"
+                    }}>
+                      <CheckCircle size={12} style={{ color: /[a-z]/.test(formData.password) && /[A-Z]/.test(formData.password) ? "#22c55e" : "#d1d5db" }} />
                       Upper & Lowercase
-                    </li>
-                    <li className={`flex items-center gap-1 ${/\d/.test(formData.password) ? 'text-green-600' : ''}`}>
-                      <CheckCircle className={`size-3 ${/\d/.test(formData.password) ? 'text-green-500' : 'text-gray-300'}`} />
+                    </span>
+                    <span style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "4px",
+                      fontSize: "12px",
+                      color: /\d/.test(formData.password) ? "#22c55e" : "#6b7280"
+                    }}>
+                      <CheckCircle size={12} style={{ color: /\d/.test(formData.password) ? "#22c55e" : "#d1d5db" }} />
                       Number
-                    </li>
-                    <li className={`flex items-center gap-1 ${/[^a-zA-Z0-9]/.test(formData.password) ? 'text-green-600' : ''}`}>
-                      <CheckCircle className={`size-3 ${/[^a-zA-Z0-9]/.test(formData.password) ? 'text-green-500' : 'text-gray-300'}`} />
+                    </span>
+                    <span style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "4px",
+                      fontSize: "12px",
+                      color: /[^a-zA-Z0-9]/.test(formData.password) ? "#22c55e" : "#6b7280"
+                    }}>
+                      <CheckCircle size={12} style={{ color: /[^a-zA-Z0-9]/.test(formData.password) ? "#22c55e" : "#d1d5db" }} />
                       Special character
-                    </li>
-                  </ul>
+                    </span>
+                  </div>
                 </div>
               )}
             </div>
 
             {/* Confirm Password */}
-            <div className="relative">
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1.5">
+            <div style={{ marginBottom: "20px" }}>
+              <label style={{
+                display: "block",
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "#374151",
+                marginBottom: "6px"
+              }}>
                 Confirm Password
               </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
+              <div style={{ position: "relative" }}>
+                <Lock style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  width: "16px",
+                  height: "16px",
+                  color: "#9ca3af"
+                }} />
                 <input
-                  id="confirmPassword"
                   name="confirmPassword"
                   type={showConfirmPassword ? 'text' : 'password'}
-                  required
-                  className={`w-full pl-10 pr-12 py-3 border rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition ${
-                    formData.confirmPassword && formData.confirmPassword !== formData.password
-                      ? 'border-red-300 bg-red-50'
-                      : formData.confirmPassword && formData.confirmPassword === formData.password
-                      ? 'border-green-300 bg-green-50'
-                      : 'border-gray-200'
-                  }`}
-                  placeholder="Confirm your password"
                   value={formData.confirmPassword}
                   onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "12px 48px 12px 40px",
+                    border: "1px solid #e5e7eb",
+                    borderRadius: "12px",
+                    fontSize: "14px",
+                    color: "#111827",
+                    outline: "none",
+                    transition: "all 0.2s",
+                    boxSizing: "border-box",
+                    background: "white"
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "#2563eb";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.1)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "#e5e7eb";
+                    e.target.style.boxShadow = "none";
+                  }}
+                  placeholder="Confirm your password"
+                  required
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition"
+                  style={{
+                    position: "absolute",
+                    right: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "transparent",
+                    border: "none",
+                    color: "#9ca3af",
+                    cursor: "pointer",
+                    padding: "4px"
+                  }}
                 >
-                  {showConfirmPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                  {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
               {formData.confirmPassword && (
-                <p className={`mt-1.5 text-xs ${
-                  formData.confirmPassword === formData.password 
-                    ? 'text-green-600' 
-                    : 'text-red-600'
-                }`}>
+                <p style={{
+                  marginTop: "6px",
+                  fontSize: "12px",
+                  color: formData.confirmPassword === formData.password ? "#22c55e" : "#dc2626"
+                }}>
                   {formData.confirmPassword === formData.password 
                     ? '✓ Passwords match' 
                     : '✗ Passwords do not match'}
@@ -397,32 +780,75 @@ const UserSignup = () => {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex items-center justify-center gap-2 py-3.5 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-lg shadow-red-600/25 hover:shadow-red-600/40"
+              style={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                padding: "14px",
+                border: "none",
+                borderRadius: "12px",
+                fontSize: "14px",
+                fontWeight: "600",
+                color: "white",
+                background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+                cursor: loading ? "not-allowed" : "pointer",
+                opacity: loading ? 0.7 : 1,
+                transition: "all 0.2s",
+                boxShadow: "0 4px 12px rgba(37,99,235,0.25)"
+              }}
+              onMouseEnter={(e) => {
+                if (!loading) {
+                  e.target.style.transform = "scale(1.02)";
+                  e.target.style.boxShadow = "0 4px 16px rgba(37,99,235,0.35)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "0 4px 12px rgba(37,99,235,0.25)";
+              }}
             >
               {loading ? (
                 <>
                   <motion.div 
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    className="size-5 border-2 border-white/30 border-t-white rounded-full"
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      border: "2px solid rgba(255,255,255,0.3)",
+                      borderTopColor: "white",
+                      borderRadius: "50%"
+                    }}
                   />
-                  Creating account...
+                  <span>Creating account...</span>
                 </>
               ) : (
                 <>
-                  <UserPlus className="size-4" />
-                  Create Account
+                  <UserPlus size={16} />
+                  <span>Create Account</span>
                 </>
               )}
             </button>
 
             {/* Back to Home */}
-            <div className="text-center">
+            <div style={{ textAlign: "center", paddingTop: "16px" }}>
               <Link 
                 to="/" 
-                className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-red-600 transition"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontSize: "14px",
+                  color: "#9ca3af",
+                  textDecoration: "none",
+                  transition: "color 0.2s"
+                }}
+                onMouseEnter={(e) => e.target.style.color = "#2563eb"}
+                onMouseLeave={(e) => e.target.style.color = "#9ca3af"}
               >
-                <ArrowLeft className="size-4" />
+                <ArrowLeft size={16} />
                 Back to Home
               </Link>
             </div>
@@ -434,21 +860,29 @@ const UserSignup = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-6 flex items-center justify-center gap-6 text-xs text-gray-400"
+          style={{
+            marginTop: "24px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "24px",
+            fontSize: "12px",
+            color: "#9ca3af"
+          }}
         >
-          <span className="flex items-center gap-1.5">
-            <Heart className="size-3 text-red-500" />
+          <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <Shield size={12} style={{ color: "#3b82f6" }} />
             Secure & Private
           </span>
-          <span className="w-px h-4 bg-gray-300" />
-          <span className="flex items-center gap-1.5">
-            <CheckCircle className="size-3 text-green-500" />
+          <span style={{ width: "1px", height: "16px", background: "#d1d5db" }} />
+          <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <CheckCircle size={12} style={{ color: "#22c55e" }} />
             100% Free
           </span>
-          <span className="w-px h-4 bg-gray-300" />
-          <span className="flex items-center gap-1.5">
-            <Shield className="size-3 text-blue-500" />
-            Data Protected
+          <span style={{ width: "1px", height: "16px", background: "#d1d5db" }} />
+          <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <Brain size={12} style={{ color: "#7c3aed" }} />
+            Student Wellness
           </span>
         </motion.div>
       </motion.div>
