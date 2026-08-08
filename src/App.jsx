@@ -34,6 +34,9 @@ export default function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            {/* Add these routes to fix the errors */}
+            <Route path="/privacy" element={<div style={{ padding: "120px 24px", textAlign: "center" }}><h1>Privacy Policy</h1><p>Coming soon...</p></div>} />
+            <Route path="/terms" element={<div style={{ padding: "120px 24px", textAlign: "center" }}><h1>Terms of Service</h1><p>Coming soon...</p></div>} />
           </Routes>
         </div>
 
