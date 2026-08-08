@@ -10,23 +10,18 @@ import {
   FaUserMd,
   FaGraduationCap,
   FaHandsHelping,
-  FaQuoteLeft,
-  FaAward,
-  FaGlobe,
   FaBullseye,
   FaEye,
-  FaGem,
-  FaRocket,
-  FaHands,
-  FaLeaf,
-  FaCompass,
   FaUserFriends,
   FaPhoneAlt,
   FaEnvelope,
-  FaMapMarkerAlt
+  FaMapMarkerAlt,
+  FaHome,
+  FaInfoCircle,
+  FaPhone,
+  FaQuestionCircle,
+  FaFileAlt
 } from 'react-icons/fa';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 export default function About() {
   const values = [
@@ -50,16 +45,140 @@ export default function About() {
     { value: "24/7", label: "Support Available", icon: <FaClock className="text-3xl" /> }
   ];
 
+  const quickLinks = [
+    { to: "/", label: "Home", icon: <FaHome className="mr-1" /> },
+    { to: "/about", label: "About Us", icon: <FaInfoCircle className="mr-1" /> },
+    { to: "/contact", label: "Contact", icon: <FaPhone className="mr-1" /> },
+    { to: "/faq", label: "FAQs", icon: <FaQuestionCircle className="mr-1" /> },
+    { to: "/privacy", label: "Privacy Policy", icon: <FaShieldAlt className="mr-1" /> },
+    { to: "/terms", label: "Terms of Service", icon: <FaFileAlt className="mr-1" /> }
+  ];
+
   return (
     <div style={{
       minHeight: "100vh",
       background: "#f4f6f8"
     }}>
-      <Navbar />
+      {/* ================= NAVBAR ================= */}
+      <nav style={{
+        background: "white",
+        borderBottom: "1px solid #e5e7eb",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+        padding: "0 24px",
+        position: "sticky",
+        top: 0,
+        zIndex: 50
+      }}>
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          height: "64px"
+        }}>
+          <Link to="/" style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            textDecoration: "none"
+          }}>
+            <div style={{
+              background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+              color: "white",
+              width: "36px",
+              height: "36px",
+              borderRadius: "8px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "18px"
+            }}>
+              <FaBrain />
+            </div>
+            <span style={{
+              fontSize: "20px",
+              fontWeight: "700",
+              color: "#111827"
+            }}>
+              Student<span style={{ color: "#2563eb" }}>Mental</span>
+            </span>
+          </Link>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
+            <div style={{ display: "flex", gap: "20px" }}>
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  style={{
+                    fontSize: "14px",
+                    color: "#6b7280",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                    display: "flex",
+                    alignItems: "center"
+                  }}
+                  onMouseEnter={(e) => e.target.style.color = "#2563eb"}
+                  onMouseLeave={(e) => e.target.style.color = "#6b7280"}
+                >
+                  {link.icon}
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+              <Link to="/login" style={{
+                fontSize: "14px",
+                color: "#6b7280",
+                textDecoration: "none",
+                padding: "8px 16px",
+                borderRadius: "8px",
+                transition: "all 0.2s"
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = "#f3f4f6";
+                e.target.style.color = "#111827";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = "transparent";
+                e.target.style.color = "#6b7280";
+              }}>
+                Login
+              </Link>
+              <Link to="/signup" style={{
+                fontSize: "14px",
+                fontWeight: "600",
+                color: "white",
+                background: "linear-gradient(135deg, #2563eb, #7c3aed)",
+                padding: "8px 20px",
+                borderRadius: "8px",
+                textDecoration: "none",
+                transition: "all 0.2s",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px"
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "scale(1.02)";
+                e.target.style.boxShadow = "0 4px 12px rgba(37,99,235,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "none";
+              }}>
+                <FaCheckCircle className="text-sm" />
+                Get Started
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       {/* ================= HERO SECTION ================= */}
       <section style={{
-        padding: "120px 24px 60px",
+        padding: "80px 24px 60px",
         background: "linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #faf5ff 100%)",
         position: "relative",
         overflow: "hidden"
@@ -520,7 +639,149 @@ export default function About() {
         </div>
       </section>
 
-      <Footer />
+      {/* ================= FOOTER ================= */}
+      <footer style={{
+        background: "#111827",
+        color: "white",
+        padding: "48px 24px"
+      }}>
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "32px"
+        }}>
+          <div>
+            <h2 style={{ fontSize: "20px", fontWeight: "700", marginBottom: "12px", display: "flex", alignItems: "center", gap: "8px" }}>
+              <FaBrain className="text-blue-400" />
+              Student<span style={{ color: "#60a5fa" }}>Mental</span>
+            </h2>
+            <p style={{ color: "#9ca3af", fontSize: "14px", lineHeight: "1.6" }}>
+              Empowering students with professional mental health support and counselling services.
+            </p>
+          </div>
+
+          <div>
+            <h3 style={{
+              fontSize: "14px",
+              fontWeight: "600",
+              color: "#9ca3af",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              marginBottom: "12px"
+            }}>
+              Quick Links
+            </h3>
+            <ul style={{ listStyle: "none", padding: 0 }}>
+              {quickLinks.map((link) => (
+                <li key={link.to} style={{ marginBottom: "8px" }}>
+                  <Link to={link.to} style={{
+                    color: "#9ca3af",
+                    textDecoration: "none",
+                    fontSize: "14px",
+                    transition: "color 0.2s",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px"
+                  }}
+                  onMouseEnter={(e) => e.target.style.color = "white"}
+                  onMouseLeave={(e) => e.target.style.color = "#9ca3af"}>
+                    {link.icon}
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 style={{
+              fontSize: "14px",
+              fontWeight: "600",
+              color: "#9ca3af",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              marginBottom: "12px"
+            }}>
+              Our Services
+            </h3>
+            <ul style={{ listStyle: "none", padding: 0 }}>
+              {values.map((value) => (
+                <li key={value.title} style={{ marginBottom: "8px" }}>
+                  <Link to="/services" style={{
+                    color: "#9ca3af",
+                    textDecoration: "none",
+                    fontSize: "14px",
+                    transition: "color 0.2s"
+                  }}
+                  onMouseEnter={(e) => e.target.style.color = "white"}
+                  onMouseLeave={(e) => e.target.style.color = "#9ca3af"}>
+                    {value.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 style={{
+              fontSize: "14px",
+              fontWeight: "600",
+              color: "#9ca3af",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+              marginBottom: "12px"
+            }}>
+              Get In Touch
+            </h3>
+            <ul style={{ listStyle: "none", padding: 0, color: "#9ca3af", fontSize: "14px", lineHeight: "1.8" }}>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <FaMapMarkerAlt className="text-blue-400" /> Garissa University, Kenya
+              </li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <FaEnvelope className="text-blue-400" />
+                <a href="mailto:support@studentmental.com" style={{
+                  color: "#9ca3af",
+                  textDecoration: "none",
+                  transition: "color 0.2s"
+                }}
+                onMouseEnter={(e) => e.target.style.color = "white"}
+                onMouseLeave={(e) => e.target.style.color = "#9ca3af"}>
+                  support@studentmental.com
+                </a>
+              </li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <FaPhoneAlt className="text-blue-400" />
+                <a href="tel:+1234567890" style={{
+                  color: "#9ca3af",
+                  textDecoration: "none",
+                  transition: "color 0.2s"
+                }}
+                onMouseEnter={(e) => e.target.style.color = "white"}
+                onMouseLeave={(e) => e.target.style.color = "#9ca3af"}>
+                  +1 (234) 567-890
+                </a>
+              </li>
+              <li style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <FaClock className="text-blue-400" /> 24/7 Support Available
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div style={{
+          borderTop: "1px solid #1f2937",
+          marginTop: "32px",
+          paddingTop: "32px",
+          textAlign: "center",
+          color: "#9ca3af",
+          fontSize: "14px"
+        }}>
+          <p>© 2026 Student Mental Health & Counselling | All Rights Reserved</p>
+          <p style={{ fontSize: "12px", marginTop: "4px", color: "#6b7280" }}>PREPARED BY: MASELO MOH</p>
+        </div>
+      </footer>
     </div>
   );
 }
